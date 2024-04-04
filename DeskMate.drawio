@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-04T08:55:21.597Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0" etag="fKGaSou7X23Vc2agCMIA" version="24.2.2" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-04T08:56:32.201Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0" etag="xNe53oC5PC9fkgrsVLJ_" version="24.2.2" type="github">
   <diagram name="Page-1" id="oZuhBYSjez9JarksrdzC">
     <mxGraphModel dx="1042" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -271,7 +271,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-133" value="Registračná žiadosť (formulár)" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" parent="1" vertex="1">
-          <mxGeometry x="442" y="1135" width="230" height="132" as="geometry" />
+          <mxGeometry x="442" y="1135" width="230" height="106" as="geometry" />
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-134" value="Meno a priezvisko" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-133" vertex="1">
           <mxGeometry y="26" width="230" height="26" as="geometry" />
@@ -281,9 +281,6 @@
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-136" value="Telefónne číslo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-133" vertex="1">
           <mxGeometry y="80" width="230" height="26" as="geometry" />
-        </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-138" value="Firma" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-133" vertex="1">
-          <mxGeometry y="106" width="230" height="26" as="geometry" />
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-137" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7eV821tfFIHRaUn_tdl3-129" target="7eV821tfFIHRaUn_tdl3-133" edge="1">
           <mxGeometry relative="1" as="geometry" />
