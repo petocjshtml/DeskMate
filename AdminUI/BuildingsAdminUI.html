@@ -54,194 +54,44 @@
             </ol>
          </nav>
 
-         <button type="button" class="btn btn-outline-success ml-3">Pridať Budovu</button>
+         <div class="container-fluid">
+            <form class="form-inline">
+               <div class="form-group mb-3 mr-3">
+                  <button type="button" onclick="pridajBudovu()" class="btn btn-outline-success">
+                     Pridať budovu
+                  </button>
+               </div>
+               <div class="form-group mb-3 mr-3">
+                  <input
+                     id="pridaj_nazov_budovy"
+                     type="search"
+                     class="form-control"
+                     placeholder="Názov budovy"
+                     style="width: 458px"
+                  />
+               </div>
+               <div class="form-group mb-3">
+                  <input
+                     id="pridaj_lokalitu_budovy"
+                     type="search"
+                     class="form-control"
+                     placeholder="Lokalita budovy"
+                     style="width: 458px"
+                  />
+               </div>
+            </form>
+         </div>
 
          <hr style="border: 2px solid #28a745" />
 
          <div class="container-fluid">
-            <div class="row mt-1">
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mt-1">
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Mirage OC Žilina</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Dolny val 2 01001 Zilina</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Zasadačka</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Kuchyňa</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
+            <div class="row mt-1" id="parent">
+               <!--  výpis kariet javascriptom sem -->
             </div>
          </div>
       </div>
 
+      <script src="js/BuildingsAdminUI.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    </body>

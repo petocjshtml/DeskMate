@@ -79,9 +79,13 @@ function upravMiestnost(karta) {
    alert("Nová lokácia miestnosti je: " + lokacia);
 }
 
-function vymazMiestnost(karta) {
-   let parent_element = karta.closest(".desk-mate-karta");
-   alert(parent_element.getAttribute("miestnost-mongo-id"));
+function vymazMiestnost(delete_btn) {
+   /* overenie či nieje v editovatelnom mode */
+   if (delete_btn.innerText === "Vymazať") {
+      /* logika pre backend */
+      let karta = delete_btn.closest(".desk-mate-karta");
+      alert(karta.getAttribute("miestnost-mongo-id"));
+   }
 }
 
 const roomsData = [
@@ -140,6 +144,10 @@ function nacitajMiestnosti(roomsData) {
          </div>
        `;
    });
+}
+
+function eventVymazania() {
+   vymazMiestnost(this);
 }
 
 function getRoomTablesHTML(tables_array) {
