@@ -45,6 +45,7 @@
                </div>
             </div>
          </nav>
+
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-1" style="background: rgba(0, 0, 0, 0.5)">
                <li class="breadcrumb-item text-success">Root</li>
@@ -55,23 +56,44 @@
          </nav>
 
          <hr style="border: 2px solid #28a745" />
+
          <div class="container-fluid">
             <div class="row mt-1">
                <div class="col-sm-12 col-md-6 mb-3">
-                  <div class="desk-mate-karta">
-                     <span style="font-size: 1.25rem">Gusto Rýchly &nbsp;&nbsp;(Admin)</span>
+                  <div class="desk-mate-karta ce1" pouzivatel-mongo-id="507f1f77bcf86cd7994e9013">
+                     <span style="font-size: 1.25rem" class="ce2"
+                        >Gusto Rýchly &nbsp;&nbsp;(Admin)</span
+                     >
                      <hr style="border: 2px solid #28a745" />
                      <ul>
-                        <li>Email: <span class="text-success">gustorychly@gmail.com</span></li>
-                        <li>Tel. číslo: <span class="text-success">+421 902 192 388</span></li>
+                        <li>Email: <span class="text-success ce3">gustorychly@gmail.com</span></li>
+                        <li>Tel. číslo: <span class="text-success ce4">+421 902 192 388</span></li>
+                        <li>
+                           Heslo:
+                           <input
+                              type="password"
+                              class="text-white ce5"
+                              style="background: rgba(0, 0, 0, 0.5)"
+                              value="adminPass123"
+                              disabled
+                           />
+                        </li>
                      </ul>
-                     <button type="button" class="btn btn-outline-success">Upraviť Profil</button>
+
+                     <button
+                        type="button"
+                        onclick="EditCard(this)"
+                        class="btn btn-outline-success ce6"
+                     >
+                        Upraviť Profil
+                     </button>
                   </div>
                </div>
             </div>
          </div>
       </div>
 
+      <script src="js/ProfilAdminUI.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    </body>

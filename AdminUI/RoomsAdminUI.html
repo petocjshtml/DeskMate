@@ -57,187 +57,52 @@
             </ol>
          </nav>
 
-         <button type="button" class="btn btn-outline-success ml-3">Pridať Miestnosť</button>
+         <div class="container-fluid">
+            <form class="form-inline">
+               <div class="form-group mb-3 mr-3">
+                  <button type="button" onclick="pridajMiestnost()" class="btn btn-outline-success">
+                     Pridať miestnosť
+                  </button>
+               </div>
+               <div class="form-group mb-3 mr-3">
+                  <input
+                     id="pridaj_nazov_miestnosti"
+                     type="search"
+                     class="form-control"
+                     placeholder="Názov miestnosti"
+                     style="width: 446px"
+                  />
+               </div>
+               <div class="form-group mb-3">
+                  <input
+                     id="pridaj_lokaciu_miestnosti"
+                     type="search"
+                     class="form-control"
+                     placeholder="Lokácia miestnosti"
+                     style="width: 446px"
+                  />
+               </div>
+            </form>
+         </div>
 
          <hr style="border: 2px solid #28a745" />
-
          <div class="container-fluid">
-            <div class="row mt-1">
+            <div class="row mt-1" id="parent">
                <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
+                  <div class="desk-mate-karta ce1" miestnost-mongo-id="507f1f77bcf86cd799439011">
                      <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Zasadačka</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
+                        ><h3 id="autoselect" class="text-white ce2">Conference Room A</h3></a
+                     >
+                     <hr style="border: 2px solid rgb(40, 167, 69)" />
+                     <h5 class="ce3">First floor, near the lobby</h5>
+                     <hr style="border: 2px solid rgb(40, 167, 69)" />
+                     <ul class="ce4">
+                        <li><h5 class="text-success">Table 1</h5></li>
+                        <li><h5 class="text-success">Table 2</h5></li>
                      </ul>
                      <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Kuchyňa</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Zasadačka</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Kuchyňa</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="row mt-1">
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Zasadačka</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Kuchyňa</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Zasadačka</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
-                     </div>
-                  </div>
-               </div>
-               <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
-                  <div class="desk-mate-karta">
-                     <a href="#" style="text-decoration: none"
-                        ><h3 class="text-white">Kuchyňa</h3>
-                     </a>
-                     <hr style="border: 2px solid #28a745" />
-                     <h5>Druhé poschodie na konci chodby</h5>
-                     <hr style="border: 2px solid #28a745" />
-                     <ul>
-                        <li>
-                           <h5 class="text-success">Stôl A</h5>
-                        </li>
-                        <li>
-                           <h5 class="text-success">Stôl B</h5>
-                        </li>
-                     </ul>
-                     <div class="btn-group" role="group" aria-label="Basic example">
-                        <button type="button" class="btn btn-outline-success">Upraviť</button>
-                        <button type="button" class="btn btn-outline-danger">Vymazať</button>
+                        <button type="button" class="btn btn-outline-success ce5">Upraviť</button
+                        ><button type="button" class="btn btn-outline-danger ce6">Vymazať</button>
                      </div>
                   </div>
                </div>
@@ -245,6 +110,7 @@
          </div>
       </div>
 
+      <script src="js/RoomsAdminUI.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
    </body>
