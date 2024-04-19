@@ -1,0 +1,48 @@
+/* drevo v pozadí teľa stránky (DeskMate) */
+body {
+   background: url("../Images/bg.jpg") no-repeat center center fixed;
+   background-size: cover;
+}
+
+/* homepage */
+.welcome-section {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   color: white;
+}
+.form-container {
+   background: rgba(0, 0, 0, 0.5);
+   padding: 2rem;
+   border-radius: 10px;
+}
+.welcome-text {
+   background: rgba(0, 0, 0, 0.5);
+   padding: 2rem;
+   border-radius: 10px;
+   margin-bottom: 20px;
+}
+
+/* navbar icon */
+.navbar-toggler {
+   background-color: #28a745;
+}
+
+.navbar-toggler-icon {
+   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23fff' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* štýl obsahu stránky */
+.body-obsah {
+   background: rgba(0, 0, 0, 0.5);
+}
+
+/* štýl karty */
+.desk-mate-karta {
+   border: 2px solid #28a745;
+   background: rgba(0, 0, 0, 0.5);
+   padding: 2rem;
+   border-radius: 10px;
+   color: white;
+}

@@ -1,0 +1,17 @@
+{
+   "name": "deskmate",
+   "version": "1.0.0",
+   "description": "Aplikácia na rezerváciu zdieľaného miesta v kancelárii.\r # Vývojový diagram \r Je dostupný v súbore projektu [DeskMate.drawio](https://github.com/petocjshtml/DeskMate/blob/main/DeskMate.drawio)",
+   "main": "index.js",
+   "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "start": "nodemon server.js"
+   },
+   "keywords": [],
+   "author": "",
+   "license": "ISC",
+   "dependencies": {
+      "express": "^4.19.2",
+      "nodemon": "^3.1.0"
+   }
+}
