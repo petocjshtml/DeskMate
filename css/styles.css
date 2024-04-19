@@ -4,6 +4,26 @@ body {
    background-size: cover;
 }
 
+/* homepage */
+.welcome-section {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   min-height: 100vh;
+   color: white;
+}
+.form-container {
+   background: rgba(0, 0, 0, 0.5);
+   padding: 2rem;
+   border-radius: 10px;
+}
+.welcome-text {
+   background: rgba(0, 0, 0, 0.5);
+   padding: 2rem;
+   border-radius: 10px;
+   margin-bottom: 20px;
+}
+
 /* navbar icon */
 .navbar-toggler {
    background-color: #28a745;

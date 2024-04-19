@@ -8,31 +8,10 @@
          href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
       />
       <title>Request an Account</title>
-      <style>
-         body {
-            background: url("../Images/bg.jpg") no-repeat center center fixed;
-            background-size: cover;
-         }
-         .account-section {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: white;
-         }
-         .form-container {
-            background: rgba(0, 0, 0, 0.5);
-            padding: 2rem;
-            border-radius: 10px;
-         }
-
-         .back {
-            cursor: pointer;
-         }
-      </style>
+      <link rel="stylesheet" href="css/styles.css" />
    </head>
    <body>
-      <div class="account-section">
+      <div class="welcome-section">
          <div class="container">
             <div class="row">
                <div class="col-md-8 offset-md-2">
@@ -71,7 +50,7 @@
                         </div>
 
                         <button type="submit" class="btn btn-success">Submit Request</button>
-                        <a class="back" style="text-decoration: none" href="../index.html"
+                        <a style="text-decoration: none; cursor: pointer" href="index.html"
                            ><h1>←</h1></a
                         >
                      </form>
