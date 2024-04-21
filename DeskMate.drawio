@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-19T17:12:03.280Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36 Edg/123.0.0.0" etag="y_WqRp4EjkslGoHbDNvQ" version="24.2.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-21T06:42:52.922Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" etag="qNtCW3Nyajv7HYXiXpuc" version="24.2.7" type="github">
   <diagram name="Page-1" id="oZuhBYSjez9JarksrdzC">
     <mxGraphModel dx="1042" dy="569" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -94,7 +94,7 @@
         <mxCell id="7eV821tfFIHRaUn_tdl3-24" value="lokácia budovy" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="258" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-35" value="miestnosti budovy" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-35" value="miestnosti (pole id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="284" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-27" value="id miestnosti" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
@@ -106,29 +106,32 @@
         <mxCell id="7eV821tfFIHRaUn_tdl3-29" value="lokácia miestnosti" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="428" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-30" value="stoly miestnosti" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-30" value="stoly (pole id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;container=0;" parent="1" vertex="1">
           <mxGeometry x="40" y="454" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7eV821tfFIHRaUn_tdl3-89" target="HlGKzopHsNnBt6nVCNmD-18" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-89" value="Zamestnanec" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" parent="1" vertex="1">
-          <mxGeometry x="255" y="258" width="140" height="156" as="geometry" />
+        <mxCell id="7eV821tfFIHRaUn_tdl3-89" value="Používateľ" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" parent="1" vertex="1">
+          <mxGeometry x="255" y="180" width="140" height="182" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-90" value="id zamestnanca" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-90" value="id používateľa" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
           <mxGeometry y="26" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-91" value="meno a priezvisko" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-94" value="is_admin" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
           <mxGeometry y="52" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-92" value="email" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-91" value="meno a priezvisko" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
           <mxGeometry y="78" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-93" value="heslo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-92" value="email" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
           <mxGeometry y="104" width="140" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="7eV821tfFIHRaUn_tdl3-94" value="telefónne číslo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
+        <mxCell id="7eV821tfFIHRaUn_tdl3-93" value="heslo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="7eV821tfFIHRaUn_tdl3-89" vertex="1">
           <mxGeometry y="130" width="140" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="mSQDNrsOUflfhc6v64Gs-2" value="telefónne číslo" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" vertex="1" parent="7eV821tfFIHRaUn_tdl3-89">
+          <mxGeometry y="156" width="140" height="26" as="geometry" />
         </mxCell>
         <mxCell id="7eV821tfFIHRaUn_tdl3-101" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;entryX=0;entryY=1;entryDx=0;entryDy=0;" parent="1" source="7eV821tfFIHRaUn_tdl3-54" target="7eV821tfFIHRaUn_tdl3-12" edge="1">
           <mxGeometry relative="1" as="geometry" />
@@ -141,10 +144,10 @@
             <mxGeometry x="590" y="316" width="120" height="60" as="geometry" />
           </mxCell>
         </UserObject>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-13" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7eV821tfFIHRaUn_tdl3-83" target="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-13" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7eV821tfFIHRaUn_tdl3-83" target="54GRSzC8ehxCKIeY6Rlc-3" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-14" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="7eV821tfFIHRaUn_tdl3-83" target="54GRSzC8ehxCKIeY6Rlc-7">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-14" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;startArrow=none;endArrow=none;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="7eV821tfFIHRaUn_tdl3-83" target="54GRSzC8ehxCKIeY6Rlc-7" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <UserObject label="Rozhranie Zamestnanca" treeRoot="1" id="7eV821tfFIHRaUn_tdl3-83">
@@ -336,16 +339,16 @@
         <mxCell id="HlGKzopHsNnBt6nVCNmD-7" value="id stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-1" value="názov stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="HlGKzopHsNnBt6nVCNmD-6">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-1" value="názov stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
           <mxGeometry y="60" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-8" value="počet ľudí" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
           <mxGeometry y="90" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HlGKzopHsNnBt6nVCNmD-9" value="vybavenia stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
+        <mxCell id="HlGKzopHsNnBt6nVCNmD-9" value="vybavenia (pole id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
           <mxGeometry y="120" width="140" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HlGKzopHsNnBt6nVCNmD-10" value="rezervácie stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
+        <mxCell id="HlGKzopHsNnBt6nVCNmD-10" value="rezervácie (pole id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-6" vertex="1">
           <mxGeometry y="150" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-14" value="Vybavenie" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
@@ -361,51 +364,51 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-18" value="Rezervácia" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="210" y="480" width="230" height="150" as="geometry" />
+          <mxGeometry x="210" y="454" width="230" height="150" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-19" value="id rezervácie" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-18" vertex="1">
           <mxGeometry y="30" width="230" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-2" value="dátum rezervácie" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="HlGKzopHsNnBt6nVCNmD-18">
+        <mxCell id="HlGKzopHsNnBt6nVCNmD-20" value="dátum a čas od:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-18" vertex="1">
           <mxGeometry y="60" width="230" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HlGKzopHsNnBt6nVCNmD-20" value="čas rezervácie (od-do)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-18" vertex="1">
+        <mxCell id="mSQDNrsOUflfhc6v64Gs-1" value="dátum a čas do:" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="HlGKzopHsNnBt6nVCNmD-18">
           <mxGeometry y="90" width="230" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="HlGKzopHsNnBt6nVCNmD-27" value="zamestnanec" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-18" vertex="1">
+        <mxCell id="HlGKzopHsNnBt6nVCNmD-27" value="používateľ (rezervator) (id)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-18" vertex="1">
           <mxGeometry y="120" width="230" height="30" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-26" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="HlGKzopHsNnBt6nVCNmD-15" target="HlGKzopHsNnBt6nVCNmD-9" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-3" value="Rezervačný systém" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-3" value="Rezervačný systém" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="400" y="825" width="220" height="210" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-4" value="pridať rezerváciu (od-do)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-4" value="pridať rezerváciu (od-do)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="30" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-5" value="filter budov" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-5" value="filter budov" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="60" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-6" value="filter počtu ľudí (miestnosť/stôl)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-6" value="filter počtu ľudí (miestnosť/stôl)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="90" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-15" value="filter vybavení" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-15" value="filter vybavení" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="120" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-16" value="filter súkromia (stôl/celá miestnosť)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-16" value="filter súkromia (stôl/celá miestnosť)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="150" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-17" value="tabuľka objektov generovaná filtrami" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-3">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-17" value="tabuľka objektov generovaná filtrami" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-3" vertex="1">
           <mxGeometry y="180" width="220" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-7" value="Rezervácie" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-7" value="Rezervácie" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
           <mxGeometry x="335" y="700" width="190" height="90" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-8" value="tabuľka objednaných. rezervácii" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-7">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-8" value="tabuľka objednaných. rezervácii" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-7" vertex="1">
           <mxGeometry y="30" width="190" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="54GRSzC8ehxCKIeY6Rlc-9" value="možnosť zrušiť rezerváciu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="54GRSzC8ehxCKIeY6Rlc-7">
+        <mxCell id="54GRSzC8ehxCKIeY6Rlc-9" value="možnosť zrušiť rezerváciu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="54GRSzC8ehxCKIeY6Rlc-7" vertex="1">
           <mxGeometry y="60" width="190" height="30" as="geometry" />
         </mxCell>
       </root>
