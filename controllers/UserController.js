@@ -1,0 +1,60 @@
+const User = require("../models/User");
+
+class UserController {
+   // Pridanie nového používateľa
+   async addUser(userData) {
+      try {
+         const user = new User(userData);
+         const savedUser = await user.save();
+         return savedUser;
+      } catch (error) {
+         throw new Error(`Error adding user: ${error.message}`);
+      }
+   }
+
+   // Úprava existujúceho používateľa
+   async editUser(userId, updateData) {
+      try {
+         const updatedUser = await User.findByIdAndUpdate(
+            userId,
+            {
+               name: updateData.name,
+               password: updateData.password,
+               phoneNumber: updateData.phoneNumber,
+            },
+            { new: true }
+         );
+         if (!updatedUser) {
+            throw new Error("User not found");
+         }
+         return updatedUser;
+      } catch (error) {
+         throw new Error(`Error updating user: ${error.message}`);
+      }
+   }
+
+   // Vymazanie používateľa podľa ID
+   async deleteUser(userId) {
+      try {
+         const deletedUser = await User.findByIdAndDelete(userId);
+         if (!deletedUser) {
+            throw new Error("User not found");
+         }
+         return deletedUser;
+      } catch (error) {
+         throw new Error(`Error deleting user: ${error.message}`);
+      }
+   }
+
+   // Získanie všetkých používateľov
+   async getAllUsers() {
+      try {
+         const allUsers = await User.find({});
+         return allUsers;
+      } catch (error) {
+         throw new Error(`Error retrieving users: ${error.message}`);
+      }
+   }
+}
+
+module.exports = UserController;
