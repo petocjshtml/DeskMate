@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" modified="2024-04-21T09:35:14.329Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" etag="2mRz0sBN5RBznz9bqtxe" version="24.2.7" type="github">
+<mxfile host="app.diagrams.net" modified="2024-04-21T09:53:35.275Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36 Edg/124.0.0.0" etag="vIKq1M9EG16E6xYOmmD1" version="24.2.7" type="github">
   <diagram name="Page-1" id="oZuhBYSjez9JarksrdzC">
     <mxGraphModel dx="1042" dy="1738" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
@@ -304,7 +304,7 @@
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-14" value="Vybavenie" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="20" y="560" width="140" height="90" as="geometry" />
+          <mxGeometry x="10" y="530" width="140" height="90" as="geometry" />
         </mxCell>
         <mxCell id="HlGKzopHsNnBt6nVCNmD-15" value="id vybavenia" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" parent="HlGKzopHsNnBt6nVCNmD-14" vertex="1">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
@@ -409,7 +409,7 @@
           <mxGeometry y="120" width="140" height="30" as="geometry" />
         </mxCell>
         <mxCell id="gHkw_iUYnPNT3x0OBblP-11" value="Stôl" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=30;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-          <mxGeometry x="30" y="313" width="140" height="180" as="geometry" />
+          <mxGeometry x="30" y="313" width="140" height="150" as="geometry" />
         </mxCell>
         <mxCell id="gHkw_iUYnPNT3x0OBblP-12" value="id stolu" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="gHkw_iUYnPNT3x0OBblP-11">
           <mxGeometry y="30" width="140" height="30" as="geometry" />
@@ -422,12 +422,6 @@
         </mxCell>
         <mxCell id="gHkw_iUYnPNT3x0OBblP-15" value="pole id vybaveni" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="gHkw_iUYnPNT3x0OBblP-11">
           <mxGeometry y="120" width="140" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="gHkw_iUYnPNT3x0OBblP-16" value="pole id rezervácií" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;spacingLeft=4;spacingRight=4;overflow=hidden;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;rotatable=0;whiteSpace=wrap;html=1;" vertex="1" parent="gHkw_iUYnPNT3x0OBblP-11">
-          <mxGeometry y="150" width="140" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="gHkw_iUYnPNT3x0OBblP-18" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="HlGKzopHsNnBt6nVCNmD-20" target="gHkw_iUYnPNT3x0OBblP-16">
-          <mxGeometry relative="1" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
