@@ -1,6 +1,8 @@
 const Desk = require("../models/Desk");
 const Room = require("../models/Room");
 const Equipment = require("../models/Equipment");
+const EquipmentController = require("./EquipmentController");
+const ReservationController = require("./ReservationController");
 
 class DeskController {
    // Pridanie stola
@@ -65,6 +67,19 @@ class DeskController {
          return updatedDesk;
       } catch (error) {
          throw new Error(`Error removing equipment from desk: ${error.message}`);
+      }
+   }
+
+   static async deleteAllDesksByRoomId(roomId) {
+      try {
+         const desks = await Desk.find({ roomId: roomId });
+         for (const desk of desks) {
+            await EquipmentController.deleteAllEquipmentByDeskId(desk._id);
+            await ReservationController.deleteAllReservationsByDeskId(desk._id);
+         }
+         await Desk.deleteMany({ roomId: roomId });
+      } catch (error) {
+         throw new Error(`Error deleting desks: ${error.message}`);
       }
    }
 

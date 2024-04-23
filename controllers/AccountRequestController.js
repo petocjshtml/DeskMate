@@ -1,7 +1,6 @@
 const AccountRequest = require("../models/AccountRequest");
 
 class AccountRequestController {
-   // Vloženie novej žiadosti o účet
    async addAccountRequest(accountRequestData) {
       try {
          const accountRequest = new AccountRequest(accountRequestData);
@@ -12,21 +11,6 @@ class AccountRequestController {
       }
    }
 
-   // Schválenie žiadosti adminom
-   async approveAccountRequestById(requestId) {
-      try {
-         const updatedAccountRequest = await AccountRequest.findByIdAndUpdate(
-            requestId,
-            { isApprovedByAdmin: true },
-            { new: true }
-         );
-         return updatedAccountRequest;
-      } catch (error) {
-         throw new Error(`Error approving account request: ${error.message}`);
-      }
-   }
-
-   // Vymazanie žiadosti (alternatíva zamietnutia žiadosti adminom)
    async deleteAccountRequestById(requestId) {
       try {
          const deletedAccountRequest = await AccountRequest.findByIdAndDelete(requestId);
@@ -36,27 +20,24 @@ class AccountRequestController {
       }
    }
 
-   // Získanie všetkých registračných žiadostí
+   async getAccountRequestById(requestId) {
+      try {
+         const accountRequest = await AccountRequest.findById(requestId);
+         if (!accountRequest) {
+            throw new Error("No account request found with that ID");
+         }
+         return accountRequest;
+      } catch (error) {
+         throw new Error(`Error retrieving account request: ${error.message}`);
+      }
+   }
+
    async getAllAccountRequests() {
       try {
          const allAccountRequests = await AccountRequest.find({});
          return allAccountRequests;
       } catch (error) {
          throw new Error(`Error retrieving all account requests: ${error.message}`);
-      }
-   }
-
-   // Overenie žiadosti používateľom
-   async verifyAccountRequestByUser(requestId) {
-      try {
-         const updatedAccountRequest = await AccountRequest.findByIdAndUpdate(
-            requestId,
-            { isVerifiedByUser: true },
-            { new: true }
-         );
-         return updatedAccountRequest;
-      } catch (error) {
-         throw new Error(`Error verifying account request by user: ${error.message}`);
       }
    }
 }

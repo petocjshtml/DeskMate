@@ -5,6 +5,7 @@ const EquipmentController = require("./controllers/EquipmentController");
 const ReservationController = require("./controllers/ReservationController");
 const RoomController = require("./controllers/RoomController");
 const UserController = require("./controllers/UserController");
+const EmailSender = require("./controllers/EmailSender");
 
 const accountRequestController = new AccountRequestController();
 const buildingController = new BuildingController();
@@ -13,12 +14,15 @@ const equipmentController = new EquipmentController();
 const reservationController = new ReservationController();
 const roomController = new RoomController();
 const userController = new UserController();
+const emailSender = new EmailSender();
 
 const express = require("express");
 const mongoose = require("mongoose");
 require("dotenv").config();
 const app = express();
 app.use(express.json());
+app.use(express.static("public"));
+const generatePassword = require("./my_modules/generatePassword");
 
 mongoose
    .connect(process.env.MONGO_URI)
@@ -27,18 +31,14 @@ mongoose
 
 const port = process.env.PORT || 3000;
 
-//endpointy
+//frontend stránka
+app.get("/", (req, res) => {
+   res.sendFile(path.join(__dirname, "/public/index.html"));
+});
+
+//backend endpointy
+
 //########################################## ACCOUNT REQUESTS ################################
-/* 
-//Pridanie žiadosti účtu do databázy
-req.body = {
-   name: "Alojz Srnka",
-   email: "alojzsrnka@gmail.com",
-   phoneNumber: "0911 153 826", 
-   isApprovedByAdmin: false,
-   isVerifiedByUser: false,
-};
-*/
 app.post("/addAccountRequest", async (req, res) => {
    try {
       const newAccountRequest = await accountRequestController.addAccountRequest(req.body);
@@ -48,48 +48,32 @@ app.post("/addAccountRequest", async (req, res) => {
    }
 });
 
-/* 
-//Schválenie žiadosti účtu adminom
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_account_requests",
-};
-*/
 app.post("/approveAccountRequestById", async (req, res) => {
    try {
-      const updatedRequest = await accountRequestController.approveAccountRequestById(req.body.id);
-      res.status(200).send(updatedRequest);
+      const account_request = await accountRequestController.getAccountRequestById(req.body.id);
+      await accountRequestController.deleteAccountRequestById(account_request);
+      const user_password = generatePassword();
+      const user = {
+         isAdmin: false,
+         name: account_request.name,
+         email: account_request.email,
+         password: user_password,
+         phoneNumber: account_request.phoneNumber,
+      };
+      await userController.addUser(user);
+      await emailSender.potvrdUcet(account_request.email, user_password);
+      res.status(200).send({ message: "Registračná žiadosť schválená" });
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
 });
 
-/* 
-// Vymazanie žiadosti (alternatíva zamietnutia žiadosti adminom)
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_account_requests",
-}; 
-*/
-app.post("/deleteAccountRequestById", async (req, res) => {
+app.post("/rejectAccountRequestById", async (req, res) => {
    try {
+      const account_request = await accountRequestController.getAccountRequestById(req.body.id);
       const deletedRequest = await accountRequestController.deleteAccountRequestById(req.body.id);
+      await emailSender.zamietniUcet(account_request.email);
       res.status(204).send(deletedRequest);
-   } catch (error) {
-      res.status(400).send({ error: error.message });
-   }
-});
-
-/* 
-// Overenie žiadosti používateľom
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_account_requests",
-}; 
-*/
-app.post("/verifyAccountRequestByUser", async (req, res) => {
-   try {
-      const verifiedRequest = await accountRequestController.verifyAccountRequestByUser(
-         req.body.id
-      );
-      res.status(200).send(verifiedRequest);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
@@ -109,10 +93,10 @@ app.get("/getAllAccountRequests", async (req, res) => {
 
 /* 
 // Pridanie novej budovy
-req.body = {
-   name: "Názov budovy",
-   location: "Lokalita budovy"
-}; 
+{
+   "name" : "Názov budovy",
+   "location" : "Lokalita budovy"
+} 
 */
 app.post("/addBuilding", async (req, res) => {
    try {
@@ -174,12 +158,13 @@ app.get("/getAllBuildings", async (req, res) => {
 
 /* 
 // Pridanie novej miestnosti
-req.body = {
-   buildingId: "platne_mongo_id_z_kolekcie_building",
-   roomName: "Názov miestnosti",
-   roomLocation: "Poloha miestnosti"
-}; 
+{
+   "buildingId": "platne_mongo_id_z_kolekcie_building",
+   "roomName": "Názov miestnosti",
+   "roomLocation": "Poloha miestnosti"
+}
 */
+
 app.post("/addRoom", async (req, res) => {
    try {
       const newRoom = await roomController.addRoom(req.body);
@@ -227,6 +212,15 @@ app.post("/deleteRoom", async (req, res) => {
 app.get("/getAllRooms", async (req, res) => {
    try {
       const allRooms = await roomController.getAllRooms();
+      res.status(200).send(allRooms);
+   } catch (error) {
+      res.status(500).send({ error: error.message });
+   }
+});
+
+app.post("/getAllRoomsByBuildingId", async (req, res) => {
+   try {
+      const allRooms = await roomController.getAllRoomsByBuildingId(req.body.id);
       res.status(200).send(allRooms);
    } catch (error) {
       res.status(500).send({ error: error.message });

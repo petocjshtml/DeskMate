@@ -1,5 +1,6 @@
 const Room = require("../models/Room");
 const Building = require("../models/Building");
+const DeskController = require("./DeskController");
 
 class RoomController {
    // Pridanie novej miestnosti, len ak existuje referenčná budova
@@ -49,6 +50,18 @@ class RoomController {
       }
    }
 
+   static async deleteAllRoomsByBuildingId(buildingId) {
+      try {
+         const rooms = await Room.find({ buildingId: buildingId });
+         for (const room of rooms) {
+            await DeskController.deleteAllDesksByRoomId(room._id);
+         }
+         await Room.deleteMany({ buildingId: buildingId });
+      } catch (error) {
+         throw new Error(`Error deleting rooms: ${error.message}`);
+      }
+   }
+
    // Získanie všetkých miestností
    async getAllRooms() {
       try {
@@ -56,6 +69,19 @@ class RoomController {
          return allRooms;
       } catch (error) {
          throw new Error(`Error retrieving rooms: ${error.message}`);
+      }
+   }
+
+   async getAllRoomsByBuildingId(buildingId) {
+      try {
+         const buildingExists = await Building.findById(buildingId);
+         if (!buildingExists) {
+            throw new Error("Building with the given ID does not exist");
+         }
+         const rooms = await Room.find({ buildingId: buildingId });
+         return rooms;
+      } catch (error) {
+         throw new Error(`Error retrieving rooms by building ID: ${error.message}`);
       }
    }
 }

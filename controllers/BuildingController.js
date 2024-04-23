@@ -1,4 +1,5 @@
 const Building = require("../models/Building");
+const RoomController = require("./RoomController");
 // Tu sa predpokladá, že model Building má polia `name` a `location`.
 
 class BuildingController {
@@ -26,16 +27,17 @@ class BuildingController {
       }
    }
 
-   // Vymazanie budovy podľa ID
    async deleteBuilding(buildingId) {
       try {
          const deletedBuilding = await Building.findByIdAndDelete(buildingId);
+         if (!deletedBuilding) {
+            return null; // Alebo môžete vrátiť chybový objekt s príslušnou správou
+         }
          return deletedBuilding;
       } catch (error) {
          throw new Error(`Error deleting building: ${error.message}`);
       }
    }
-
    // Získanie všetkých budov
    async getAllBuildings() {
       try {
