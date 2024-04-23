@@ -93,13 +93,16 @@ class DeskController {
       }
    }
 
-   // Získanie všetkých stolov
+   // Získanie všetkých stolov a vybavení
    async getAllDesks() {
       try {
-         const allDesks = await Desk.find({});
+         const allDesks = await Desk.find({}).populate({
+            path: "equipmentIds",
+            model: "Equipment",
+         });
          return allDesks;
       } catch (error) {
-         throw new Error(`Error retrieving desks: ${error.message}`);
+         throw new Error(`Chyba pri načítaní stolov: ${error.message}`);
       }
    }
 }

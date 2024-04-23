@@ -344,6 +344,37 @@ app.post("/addEquipment", async (req, res) => {
 });
 
 /* 
+// Pridanie viacero vybavení
+req.body = {
+   equipments: [{"name":"Premietačka"},{"name":"Kávovar"}]
+}; 
+*/
+
+app.post("/addEquipments", async (req, res) => {
+   try {
+      const newEquipment = await equipmentController.addEquipments(req.body);
+      res.status(201).send(newEquipment);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+/* 
+// Pridanie viacero vybavení
+req.body = {
+   "equipments": ["Premietačka","Kávovar"]
+}
+*/
+app.post("/findEquipmentsByNames", async (req, res) => {
+   try {
+      const EquipmentIds = await equipmentController.findEquipmentsByNames(req.body);
+      res.status(201).send(EquipmentIds);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+/* 
 // Vymazanie vybavenia podľa ID
 req.body = {
    id: "platne_mongo_id_z_kolekcie_equipment"

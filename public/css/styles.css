@@ -46,3 +46,9 @@ body {
    border-radius: 10px;
    color: white;
 }
+
+.dropdownScrollBar {
+   max-height: 300px;
+   overflow-y: auto;
+   overflow-x: hidden;
+}
