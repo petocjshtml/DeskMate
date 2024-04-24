@@ -1,8 +1,11 @@
 function ShowAdminRegistrationRequests() {
+   if (!checkAdminSession()) {
+      return;
+   }
    document.getElementById("render").innerHTML = `
    <div class="body-obsah">
    <nav class="navbar navbar-expand-lg" style="background: rgba(0, 0, 0, 0.5)">
-      <a class="navbar-brand text-success" href="#">Administratorské rozhranie</a>
+      <a class="navbar-brand text-success" href="#" onclick="ShowAdminBuildings()">Administratorské rozhranie</a>
       <button
          class="navbar-toggler"
          type="button"
@@ -20,11 +23,11 @@ function ShowAdminRegistrationRequests() {
             <a class="nav-item nav-link text-white disabled" href="#" style="color: white"
                >Registračné žiadosti</a
             >
-            <a class="nav-item nav-link text-success" href="#" style="color: white"
+            <a class="nav-item nav-link text-success" href="#" onclick="ShowAdminProfile()" style="color: white"
                ><i class="fas fa-user-alt"></i> Profil</a
             >
             <a class="nav-item nav-link text-success" href="#" 
-               onclick="event.preventDefault(); ShowMainPageHTML();"  
+               onclick="deleteUserSession();ShowMainPageHTML();"  
                style="color: white"
                ><i class="fas fa-sign-out-alt"></i> Odhlásiť sa</a
             >

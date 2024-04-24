@@ -1,4 +1,4 @@
-function showEditRoomModal(room_id, buildingId, name, location) {
+function showEditRoomModal(room_id, buildingId, buildingName, name, location) {
    const modalID = `editRoomModal-${room_id}`;
    return `
      <!-- Button trigger modal -->
@@ -26,7 +26,7 @@ function showEditRoomModal(room_id, buildingId, name, location) {
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <button type="button" onclick="EditRoom(this)" building-id="${buildingId}" class="btn btn-primary" 
+             <button type="button" onclick="EditRoom(this)" building-id="${buildingId}" building-name="${buildingName}" class="btn btn-primary" 
              data-dismiss="modal">Save changes</button>
          </div>
          </div>

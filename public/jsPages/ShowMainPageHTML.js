@@ -1,4 +1,8 @@
 function ShowMainPageHTML() {
+   if (!checkUnloggedSession()) {
+      return;
+   }
+
    document.getElementById("render").innerHTML = `
     <div class="welcome-section">
             <div class="container">
@@ -35,6 +39,7 @@ function ShowMainPageHTML() {
                                  id="login_password"
                                  placeholder="Password"
                               />
+                              <div id="error" class="text-danger mt-2">Neplatné udaje!</div>
                            </div>
                            <button type="submit" class="btn btn-success" onclick="event.preventDefault(); LoginUser();">Log In</button>
                            <div class="mt-3">
@@ -49,10 +54,39 @@ function ShowMainPageHTML() {
             </div>
          </div>
     `;
+   HideBadCredentialsMessage();
 }
 
 function LoginUser() {
-   const email = document.getElementById("login_email").value;
-   const password = document.getElementById("login_password").value;
-   console.log(email, password);
+   const user_email = document.getElementById("login_email").value;
+   const user_password = document.getElementById("login_password").value;
+   const auth_json = {
+      email: user_email,
+      password: user_password,
+   };
+   postData(auth_json, "/login")
+      .then((auth_response) => {
+         if (Object.keys(auth_response).length === 0) {
+            ShowBadCredentialsMessage();
+         } else {
+            createUserSession(auth_response);
+            const auth_status = authSession();
+            if (auth_status === "isAdmin") {
+               ShowAdminBuildings();
+            } else {
+               //Show User Pages Here
+            }
+         }
+      })
+      .catch((error) => {
+         console.error(error);
+      });
+}
+
+function ShowBadCredentialsMessage() {
+   document.getElementById("error").style.display = "block";
+}
+
+function HideBadCredentialsMessage() {
+   document.getElementById("error").style.display = "none";
 }

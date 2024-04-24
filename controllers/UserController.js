@@ -19,6 +19,7 @@ class UserController {
             userId,
             {
                name: updateData.name,
+               email: updateData.email,
                password: updateData.password,
                phoneNumber: updateData.phoneNumber,
             },
@@ -43,6 +44,30 @@ class UserController {
          return deletedUser;
       } catch (error) {
          throw new Error(`Error deleting user: ${error.message}`);
+      }
+   }
+
+   async selectUserByEmailAndPassword(email, password) {
+      try {
+         const user = await User.findOne({ email: email, password: password });
+         if (!user) {
+            return {};
+         }
+         return user;
+      } catch (error) {
+         throw new Error(`Error finding user: ${error.message}`);
+      }
+   }
+
+   async selectUserByEmail(email) {
+      try {
+         const user = await User.findOne({ email: email });
+         if (!user) {
+            return {};
+         }
+         return user;
+      } catch (error) {
+         throw new Error(`Error finding user: ${error.message}`);
       }
    }
 

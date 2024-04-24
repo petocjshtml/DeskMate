@@ -1,4 +1,7 @@
 function ShowAdminBuildingRooms(building_link) {
+   if (!checkAdminSession()) {
+      return;
+   }
    const buildingId = building_link.getAttribute("building-id");
    const buildingName = building_link.getAttribute("building-name");
    document.getElementById("render").innerHTML = `
@@ -19,13 +22,13 @@ function ShowAdminBuildingRooms(building_link) {
         </button>
         <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-            <a class="nav-item nav-link text-success" href="#" style="color: white"
+            <a class="nav-item nav-link text-success" onclick="ShowAdminRegistrationRequests()" href="#" style="color: white"
                 >Registračné žiadosti</a
             >
-            <a class="nav-item nav-link text-success" href="#" style="color: white"
+            <a class="nav-item nav-link text-success" href="#" onclick="ShowAdminProfile()" style="color: white"
                 ><i class="fas fa-user-alt"></i> Profil</a
             >
-            <a class="nav-item nav-link text-success" href="#" style="color: white"
+            <a class="nav-item nav-link text-success" href="#" onclick="deleteUserSession();ShowMainPageHTML();" style="color: white"
                 ><i class="fas fa-sign-out-alt"></i> Odhlásiť sa</a
             >
             </div>
@@ -80,22 +83,22 @@ function ShowAdminBuildingRooms(building_link) {
     </div>
     </div>
     `;
-   LoadRoomsFromDb(buildingId);
+   LoadRoomsFromDb(buildingId, buildingName);
 }
 
-function LoadRoomsFromDb(buildingId) {
+function LoadRoomsFromDb(buildingId, buildingName) {
    const building_id_json = { id: buildingId };
    postData(building_id_json, "/getAllRoomsByBuildingId")
       .then((data) => {
          console.log(data);
-         ShowRoomsFromDb(data, buildingId);
+         ShowRoomsFromDb(data, buildingId, buildingName);
       })
       .catch((error) => {
          alert("Chyba pri editovaní budovy");
       });
 }
 
-function ShowRoomsFromDb(rooms, buildingId) {
+function ShowRoomsFromDb(rooms, buildingId, buildingName) {
    let parent_element = document.getElementById("parent");
    //Aby sa nepridali rovnaké objekty
    parent_element.innerHTML = "";
@@ -103,14 +106,25 @@ function ShowRoomsFromDb(rooms, buildingId) {
       parent_element.innerHTML += `
        <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
           <div class="desk-mate-karta" mongo-id="${room._id}">
-             <a href="#" style="text-decoration: none"
+             <a href="#" onclick="ShowAdminRoomDesks(this)" 
+             room-id="${room._id}" 
+             room-name="${room.roomName}"
+             building-name="${buildingName}"  
+             building-id="${buildingId}"  
+             style="text-decoration: none"
                 ><h3 class="text-white">${room.roomName}</h3>
              </a>
              <hr style="border: 2px solid #28a745" />
              <h5 class="ce3">${room.roomLocation}</h5>
              <hr style="border: 2px solid #28a745" />
              <div class="btn-group" role="group" aria-label="Basic example">
-             ${showEditRoomModal(room._id, buildingId, room.roomName, room.roomLocation)}
+             ${showEditRoomModal(
+                room._id,
+                buildingId,
+                buildingName,
+                room.roomName,
+                room.roomLocation
+             )}
                 <button
                    type="button"
                    class="btn btn-outline-danger ce6"
@@ -146,6 +160,7 @@ function AddRoom(button) {
 
 function EditRoom(button) {
    const modalContent = button.closest(".modal-content");
+   const buildingName = button.getAttribute("building-name");
    const inputs = modalContent.querySelectorAll("input");
    const buildingId = button.getAttribute("building-id");
    const room_id = inputs[0].value;
@@ -162,7 +177,7 @@ function EditRoom(button) {
 
    postData(room_edited, "/editRoom")
       .then((data) => {
-         LoadRoomsFromDb(buildingId);
+         LoadRoomsFromDb(buildingId, buildingName);
       })
       .catch((error) => {
          alert("Chyba pri editovaní budovy");

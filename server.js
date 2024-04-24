@@ -37,6 +37,27 @@ app.get("/", (req, res) => {
 });
 
 //backend endpointy
+//########################################## LOGIN ################################
+app.post("/login", async (req, res) => {
+   try {
+      const auth = await userController.selectUserByEmailAndPassword(
+         req.body.email,
+         req.body.password
+      );
+      res.status(201).send(auth);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/checkIfUserExists", async (req, res) => {
+   try {
+      const is_user_exists = await userController.selectUserByEmail(req.body.email);
+      res.status(201).send(is_user_exists);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
 
 //########################################## ACCOUNT REQUESTS ################################
 app.post("/addAccountRequest", async (req, res) => {
@@ -316,13 +337,21 @@ app.post("/deleteDesk", async (req, res) => {
    }
 });
 
-// Získanie všetkých stolov
-app.get("/getAllDesks", async (req, res) => {
+app.post("/selectDeskById", async (req, res) => {
    try {
-      const allDesks = await deskController.getAllDesks();
-      res.status(200).send(allDesks);
+      const selectedDesk = await deskController.selectDeskById(req.body.id);
+      res.status(200).send(selectedDesk);
    } catch (error) {
-      res.status(500).send({ error: error.message });
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/getAllDesksByRoomId", async (req, res) => {
+   try {
+      const desksByRoomId = await deskController.getAllDesksByRoomId(req.body.id);
+      res.status(200).send(desksByRoomId);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
    }
 });
 
@@ -352,8 +381,17 @@ req.body = {
 
 app.post("/addEquipments", async (req, res) => {
    try {
-      const newEquipment = await equipmentController.addEquipments(req.body);
-      res.status(201).send(newEquipment);
+      const newEquipments = await equipmentController.addEquipments(req.body.equipments);
+      res.status(201).send(newEquipments);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/findEquipmentByName", async (req, res) => {
+   try {
+      const EquipmentIds = await equipmentController.findEquipmentByName(req.body.name);
+      res.status(201).send(EquipmentIds);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }

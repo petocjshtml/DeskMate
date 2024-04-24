@@ -5,7 +5,8 @@ class EquipmentController {
       try {
          const existingEquipment = await Equipment.findOne({ name: equipmentData.name });
          if (existingEquipment) {
-            throw new Error(`Equipment with name ${equipmentData.name} already exists`);
+            console.log(`Equipment with name ${equipmentData.name} already exists`);
+            return {}; // Return null or the existing equipment if you want to use it after calling this function
          }
          const equipment = new Equipment(equipmentData);
          const savedEquipment = await equipment.save();
@@ -15,19 +16,18 @@ class EquipmentController {
       }
    }
 
-   // Pridanie viacerých vybavení
    async addEquipments(equipments_arr) {
-      const equipments_json_arr = equipments_arr.equipments;
       try {
          const addedEquipments = [];
-         for (const equipmentData of equipments_json_arr) {
-            const existingEquipment = await Equipment.findOne({ name: equipmentData.name });
+         for (const equipmentName of equipments_arr) {
+            // Corrected iteration over array
+            const existingEquipment = await Equipment.findOne({ name: equipmentName });
             if (!existingEquipment) {
-               const equipment = new Equipment(equipmentData);
+               const equipment = new Equipment({ name: equipmentName });
                const savedEquipment = await equipment.save();
                addedEquipments.push(savedEquipment);
             } else {
-               console.log(`Equipment with name ${equipmentData.name} already exists`);
+               console.log(`Equipment with name ${equipmentName} already exists`);
             }
          }
          return addedEquipments;
@@ -51,18 +51,22 @@ class EquipmentController {
 
    async findEquipmentsByNames(equipments_arr) {
       const names = equipments_arr.equipments;
-      try {
-         const equipments = await Equipment.find({
-            name: { $in: names },
-         }).select("_id name");
+      if (names.length !== 0) {
+         try {
+            const equipments = await Equipment.find({
+               name: { $in: names },
+            }).select("_id name");
 
-         if (equipments.length === 0) {
-            throw new Error(`No equipment found for the provided names`);
+            if (equipments.length === 0) {
+               throw new Error(`No equipment found for the provided names`);
+            }
+
+            return equipments.map((eq) => ({ id: eq._id, name: eq.name })); // Vráti pole objektov s ID a názvom
+         } catch (error) {
+            throw new Error(`Error finding equipments by names: ${error.message}`);
          }
-
-         return equipments.map((eq) => ({ id: eq._id, name: eq.name })); // Vráti pole objektov s ID a názvom
-      } catch (error) {
-         throw new Error(`Error finding equipments by names: ${error.message}`);
+      } else {
+         return [];
       }
    }
 

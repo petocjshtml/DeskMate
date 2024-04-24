@@ -105,6 +105,49 @@ class DeskController {
          throw new Error(`Chyba pri načítaní stolov: ${error.message}`);
       }
    }
+
+   // Získanie všetkých stolov podľa ID miestnosti
+   async getAllDesksByRoomId(roomId) {
+      try {
+         // Overiť, či miestnosť existuje
+         const roomExists = await Room.findById(roomId);
+         if (!roomExists) {
+            throw new Error("Room with the given ID does not exist");
+         }
+
+         // Nájsť všetky stoly s daným roomId
+         const desks = await Desk.find({ roomId: roomId }).populate({
+            path: "equipmentIds",
+            model: "Equipment",
+         });
+
+         if (!desks.length) {
+            return []; // Ak neexistujú žiadne stoly, vrátiť prázdne pole
+         }
+
+         return desks;
+      } catch (error) {
+         throw new Error(`Error retrieving desks by room ID: ${error.message}`);
+      }
+   }
+
+   // Získanie stola podľa ID
+   async selectDeskById(deskId) {
+      try {
+         const desk = await Desk.findById(deskId).populate({
+            path: "equipmentIds",
+            model: "Equipment",
+         });
+
+         if (!desk) {
+            throw new Error("Desk with the given ID does not exist");
+         }
+
+         return desk;
+      } catch (error) {
+         throw new Error(`Error retrieving desk: ${error.message}`);
+      }
+   }
 }
 
 module.exports = DeskController;

@@ -1,4 +1,7 @@
 function ShowAccountRequestHTML() {
+   if (!checkUnloggedSession()) {
+      return;
+   }
    document.getElementById("render").innerHTML = `
    <div class="welcome-section">
    <div class="container">
@@ -36,6 +39,7 @@ function ShowAccountRequestHTML() {
                         placeholder="Enter your phone number here."
                         required
                      />
+                     <div id="error_reg_request" class="text-danger mt-2">Account is already exists!</div>
                   </div>
 
                   <button type="submit" class="btn btn-success" onclick="event.preventDefault(); sendRegistrationRequest();">Submit Request</button>
@@ -51,6 +55,7 @@ function ShowAccountRequestHTML() {
    </div>
    </div>
     `;
+   HideARBadCredentialsMessage();
 }
 
 function sendRegistrationRequest() {
@@ -64,14 +69,37 @@ function sendRegistrationRequest() {
       isApprovedByAdmin: false,
       isVerifiedByUser: false,
    };
-   postData(registrationRequest, "/addAccountRequest")
-      .then((data) => {
-         alert(
-            "Tvoja žiadosť bola poslana adminovi na schválenie. Ak bude schválená, príde ti email s prihlasovacími údajmi"
-         );
-         ShowMainPageHTML();
+
+   const email_json = {
+      email: email,
+   };
+
+   postData(email_json, "/checkIfUserExists")
+      .then((selected_user) => {
+         if (Object.keys(selected_user).length === 0) {
+            postData(registrationRequest, "/addAccountRequest")
+               .then((data) => {
+                  alert(
+                     "Tvoja žiadosť bola poslana adminovi na schválenie. Ak bude schválená, príde ti email s prihlasovacími údajmi"
+                  );
+                  ShowMainPageHTML();
+               })
+               .catch((error) => {
+                  console.error(error);
+               });
+         } else {
+            ShowARBadCredentialsMessage();
+         }
       })
       .catch((error) => {
          console.error(error);
       });
+}
+
+function ShowARBadCredentialsMessage() {
+   document.getElementById("error_reg_request").style.display = "block";
+}
+
+function HideARBadCredentialsMessage() {
+   document.getElementById("error_reg_request").style.display = "none";
 }

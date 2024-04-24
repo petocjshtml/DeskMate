@@ -1,4 +1,7 @@
 function ShowAdminBuildings() {
+   if (!checkAdminSession()) {
+      return;
+   }
    document.getElementById("render").innerHTML = `
     <div class="body-obsah">
     <nav class="navbar navbar-expand-lg" style="background: rgba(0, 0, 0, 0.5)">
@@ -17,13 +20,13 @@ function ShowAdminBuildings() {
        </button>
        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
           <div class="navbar-nav">
-             <a class="nav-item nav-link text-success" href="#" style="color: white"
+             <a class="nav-item nav-link text-success" href="#" onclick="ShowAdminRegistrationRequests()" style="color: white"
                 >Registračné žiadosti</a
              >
-             <a class="nav-item nav-link text-success" href="#" style="color: white"
+             <a class="nav-item nav-link text-success" onclick="ShowAdminProfile()" href="#" style="color: white"
                 ><i class="fas fa-user-alt"></i> Profil</a
              >
-             <a class="nav-item nav-link text-success" href="#" onclick="event.preventDefault(); ShowMainPageHTML();" style="color: white"
+             <a class="nav-item nav-link text-success" href="#" onclick="deleteUserSession();ShowMainPageHTML();" style="color: white"
                 ><i class="fas fa-sign-out-alt"></i> Odhlásiť sa</a
              >
           </div>
