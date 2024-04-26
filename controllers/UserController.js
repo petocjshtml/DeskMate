@@ -1,7 +1,6 @@
 const User = require("../models/User");
 
 class UserController {
-   // Pridanie nového používateľa
    async addUser(userData) {
       try {
          const user = new User(userData);
@@ -12,7 +11,6 @@ class UserController {
       }
    }
 
-   // Úprava existujúceho používateľa
    async editUser(userId, updateData) {
       try {
          const updatedUser = await User.findByIdAndUpdate(
@@ -34,7 +32,6 @@ class UserController {
       }
    }
 
-   // Vymazanie používateľa podľa ID
    async deleteUser(userId) {
       try {
          const deletedUser = await User.findByIdAndDelete(userId);
@@ -71,7 +68,6 @@ class UserController {
       }
    }
 
-   // Získanie všetkých používateľov
    async getAllUsers() {
       try {
          const allUsers = await User.find({});

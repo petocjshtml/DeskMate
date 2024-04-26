@@ -90,11 +90,10 @@ function AddBuilding() {
       location: location,
    };
    postData(building, "/addBuilding")
-      .then((data) => {
-         //alert("Budova úspešne pridaná");
+      .then(() => {
          LoadBuildingsFromDb();
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri pridávaní budovy");
       });
 }
@@ -113,11 +112,10 @@ function EditBuilding(button) {
       },
    };
    postData(building_edited, "/updateBuilding")
-      .then((data) => {
-         //alert("Budova úspešne zeditovaná");
+      .then(() => {
          LoadBuildingsFromDb();
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri editovaní budovy");
       });
 }
@@ -130,11 +128,10 @@ function DeleteBuilding(button) {
    };
 
    postData(delete_info, "/deleteBuilding")
-      .then((data) => {
-         //alert("Budova úspešne zeditovaná");
+      .then(() => {
          LoadBuildingsFromDb();
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri editovaní budovy");
       });
 }

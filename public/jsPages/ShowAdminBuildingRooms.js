@@ -90,17 +90,15 @@ function LoadRoomsFromDb(buildingId, buildingName) {
    const building_id_json = { id: buildingId };
    postData(building_id_json, "/getAllRoomsByBuildingId")
       .then((data) => {
-         console.log(data);
          ShowRoomsFromDb(data, buildingId, buildingName);
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri editovaní budovy");
       });
 }
 
 function ShowRoomsFromDb(rooms, buildingId, buildingName) {
    let parent_element = document.getElementById("parent");
-   //Aby sa nepridali rovnaké objekty
    parent_element.innerHTML = "";
    rooms.forEach((room) => {
       parent_element.innerHTML += `
@@ -150,10 +148,10 @@ function AddRoom(button) {
       roomLocation: roomLocation,
    };
    postData(roomObj, "/addRoom")
-      .then((data) => {
+      .then(() => {
          LoadRoomsFromDb(buildingId);
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri pridávaní miestnosti");
       });
 }
@@ -176,10 +174,10 @@ function EditRoom(button) {
    console.log(room_edited);
 
    postData(room_edited, "/editRoom")
-      .then((data) => {
+      .then(() => {
          LoadRoomsFromDb(buildingId, buildingName);
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri editovaní budovy");
       });
 }
@@ -193,10 +191,10 @@ function DeleteRoom(button) {
    };
 
    postData(delete_info, "/deleteRoom")
-      .then((data) => {
+      .then(() => {
          LoadRoomsFromDb(buildingId);
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri editovaní budovy");
       });
 }

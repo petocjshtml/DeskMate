@@ -5,7 +5,6 @@ const EquipmentController = require("./EquipmentController");
 const ReservationController = require("./ReservationController");
 
 class DeskController {
-   // Pridanie stola
    async addDesk(deskData) {
       try {
          // Overiť, či existuje miestnosť
@@ -22,7 +21,6 @@ class DeskController {
       }
    }
 
-   // Úprava stola
    async editDesk(deskId, updateData) {
       try {
          const updatedDesk = await Desk.findByIdAndUpdate(
@@ -36,10 +34,8 @@ class DeskController {
       }
    }
 
-   // Pridanie vybavenia k stolu
    async addEquipment(deskId, equipmentId) {
       try {
-         // Overiť, či existuje vybavenie
          const equipmentExists = await Equipment.findById(equipmentId);
          if (!equipmentExists) {
             throw new Error("Equipment with the given ID does not exist");
@@ -47,7 +43,7 @@ class DeskController {
 
          const updatedDesk = await Desk.findByIdAndUpdate(
             deskId,
-            { $addToSet: { equipmentIds: equipmentId } }, // Použiť $addToSet na zabránenie duplikátov
+            { $addToSet: { equipmentIds: equipmentId } },
             { new: true }
          );
          return updatedDesk;
@@ -56,12 +52,11 @@ class DeskController {
       }
    }
 
-   // Vymazanie vybavenia zo stola
    async deleteEquipment(deskId, equipmentId) {
       try {
          const updatedDesk = await Desk.findByIdAndUpdate(
             deskId,
-            { $pull: { equipmentIds: equipmentId } }, // Odstrániť vybavenie z pola
+            { $pull: { equipmentIds: equipmentId } },
             { new: true }
          );
          return updatedDesk;
@@ -83,7 +78,6 @@ class DeskController {
       }
    }
 
-   // Vymazanie stola
    async deleteDesk(deskId) {
       try {
          const deletedDesk = await Desk.findByIdAndDelete(deskId);
@@ -93,7 +87,6 @@ class DeskController {
       }
    }
 
-   // Získanie všetkých stolov a vybavení
    async getAllDesks() {
       try {
          const allDesks = await Desk.find({}).populate({
@@ -106,32 +99,26 @@ class DeskController {
       }
    }
 
-   // Získanie všetkých stolov podľa ID miestnosti
    async getAllDesksByRoomId(roomId) {
       try {
-         // Overiť, či miestnosť existuje
          const roomExists = await Room.findById(roomId);
          if (!roomExists) {
             throw new Error("Room with the given ID does not exist");
          }
-
-         // Nájsť všetky stoly s daným roomId
          const desks = await Desk.find({ roomId: roomId }).populate({
             path: "equipmentIds",
             model: "Equipment",
          });
 
          if (!desks.length) {
-            return []; // Ak neexistujú žiadne stoly, vrátiť prázdne pole
+            return [];
          }
-
          return desks;
       } catch (error) {
          throw new Error(`Error retrieving desks by room ID: ${error.message}`);
       }
    }
 
-   // Získanie stola podľa ID
    async selectDeskById(deskId) {
       try {
          const desk = await Desk.findById(deskId).populate({

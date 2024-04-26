@@ -6,7 +6,7 @@ class EquipmentController {
          const existingEquipment = await Equipment.findOne({ name: equipmentData.name });
          if (existingEquipment) {
             console.log(`Equipment with name ${equipmentData.name} already exists`);
-            return {}; // Return null or the existing equipment if you want to use it after calling this function
+            return {};
          }
          const equipment = new Equipment(equipmentData);
          const savedEquipment = await equipment.save();
@@ -20,7 +20,6 @@ class EquipmentController {
       try {
          const addedEquipments = [];
          for (const equipmentName of equipments_arr) {
-            // Corrected iteration over array
             const existingEquipment = await Equipment.findOne({ name: equipmentName });
             if (!existingEquipment) {
                const equipment = new Equipment({ name: equipmentName });
@@ -36,7 +35,6 @@ class EquipmentController {
       }
    }
 
-   // Vymazanie vybavenia podľa ID
    async deleteEquipment(equipmentId) {
       try {
          const deletedEquipment = await Equipment.findByIdAndDelete(equipmentId);
@@ -60,8 +58,7 @@ class EquipmentController {
             if (equipments.length === 0) {
                throw new Error(`No equipment found for the provided names`);
             }
-
-            return equipments.map((eq) => ({ id: eq._id, name: eq.name })); // Vráti pole objektov s ID a názvom
+            return equipments.map((eq) => ({ id: eq._id, name: eq.name }));
          } catch (error) {
             throw new Error(`Error finding equipments by names: ${error.message}`);
          }
@@ -70,7 +67,6 @@ class EquipmentController {
       }
    }
 
-   // Vyhľadávanie vybavenia podľa názvu
    async findEquipmentByName(name) {
       try {
          const equipment = await Equipment.findOne({ name });
@@ -83,7 +79,6 @@ class EquipmentController {
       }
    }
 
-   // Získanie všetkého vybavenia
    async getAllEquipments() {
       try {
          const allEquipment = await Equipment.find({});

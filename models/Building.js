@@ -1,14 +1,12 @@
 const mongoose = require("mongoose");
-const Room = require("./Room");
 
 const buildingSchema = new mongoose.Schema({
    name: String,
    location: String,
 });
 
-//middleware pre automatické zmazanie všetkých poddobjektov rooms
 buildingSchema.pre("findOneAndDelete", async function () {
-   console.log("This happened");
+   //ak bude v budúcnosti potrebné implementovať logiku skupinového vymazávania objektov (cascade delete)
 });
 
 const Building = mongoose.model("Building", buildingSchema);

@@ -12,7 +12,7 @@ class EmailSender {
          service: "gmail",
          host: "smtp.gmail.com",
          port: 587,
-         secure: false, // Use `true` for port 465, `false` for all other ports
+         secure: false,
          auth: {
             user: this.config.sender_email,
             pass: this.config.sender_app_password,

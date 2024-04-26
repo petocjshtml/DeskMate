@@ -96,11 +96,10 @@ function approveAccountRequest(button) {
    };
 
    postData(approve_info, "/approveAccountRequestById")
-      .then((data) => {
-         //alert("Registračná žiadosť bola schválená");
+      .then(() => {
          LoadRegistrationRequestsFromDb();
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri potvrdzovaní žiadosti");
       });
 }
@@ -113,11 +112,10 @@ function rejectAccountRequest(button) {
    };
 
    postData(reject_info, "/rejectAccountRequestById")
-      .then((data) => {
-         //alert("Registračná žiadosť bola zamietnutá");
+      .then(() => {
          LoadRegistrationRequestsFromDb();
       })
-      .catch((error) => {
+      .catch(() => {
          alert("Chyba pri potvrdzovaní žiadosti");
       });
 }

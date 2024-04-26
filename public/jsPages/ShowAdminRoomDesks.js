@@ -105,14 +105,15 @@ function ShowAdminRoomDesks(room_link) {
              <button type="button" onclick="addEquipment()" class="btn btn-outline-danger">
              <i class="fas fa-plus"></i>
              </button>
-         </div>
-         <div class="form-group mb-3 mr-3">
-             <button type="button" onclick="deleteEquipment()" class="btn btn-outline-danger">
-                 <i class="far fa-trash-alt"></i>
-             </button>
-         </div>
-         <div class="form-group mb-3 mr-3" id="equipments"></div>
-         </form>
+             </div>
+
+            <div class="form-group mb-3 mr-3">
+               <button type="button" onclick="deleteEquipment()" class="btn btn-outline-danger">
+                  <i class="far fa-trash-alt"></i>
+               </button>
+            </div>
+            <div class="form-group mb-3 mr-3" id="equipments"></div>
+            </form>
      </div>
  
      <hr style="border: 2px solid #28a745" />
@@ -128,7 +129,6 @@ function ShowAdminRoomDesks(room_link) {
    loadRoomDesksFromDb(roomId);
 }
 
-/* Equipments ovládacie funkcie */
 function showEquipmentInInput(link) {
    let equipment_input = document.getElementById("equipment_input");
    equipment_input.value = link.textContent;
@@ -137,7 +137,6 @@ function showEquipmentInInput(link) {
 function loadEquipmentsFromDb() {
    getData("/getAllEquipments")
       .then((data) => {
-         /* console.log(data); */
          showEquipmentsFromDbInDropdown(data);
       })
       .catch((error) => {
@@ -165,7 +164,7 @@ function deleteEquipmentFromDb(button) {
       id: id_to_delete,
    };
    postData(id_to_delete_json, "/deleteEquipment")
-      .then((data) => {
+      .then(() => {
          loadEquipmentsFromDb();
          $("#dropdownEquipmentsButton").dropdown("toggle");
       })
@@ -220,9 +219,8 @@ function addDesk(button) {
                   peopleNumber: parseInt(numberOfPeople, 10),
                   equipmentIds: eq_id_array,
                };
-               //console.log(new_desk);
                postData(new_desk, "/addDesk")
-                  .then((created_desk_in_mongo) => {
+                  .then(() => {
                      loadRoomDesksFromDb(roomId);
                   })
                   .catch((error) => {
@@ -270,7 +268,6 @@ function loadRoomDesksFromDb(room_id) {
 function showRoomDesksFromDb(roomDesksFromDb) {
    console.log(roomDesksFromDb);
    let parent_element = document.getElementById("parent");
-   //Aby sa nepridali rovnaké objekty
    parent_element.innerHTML = "";
    roomDesksFromDb.forEach((roomDesk) => {
       parent_element.innerHTML += `

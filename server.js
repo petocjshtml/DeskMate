@@ -31,13 +31,13 @@ mongoose
 
 const port = process.env.PORT || 3000;
 
+//########################################## ENDPOINTY ################################
+
 //frontend stránka
 app.get("/", (req, res) => {
    res.sendFile(path.join(__dirname, "/public/index.html"));
 });
 
-//backend endpointy
-//########################################## LOGIN ################################
 app.post("/login", async (req, res) => {
    try {
       const auth = await userController.selectUserByEmailAndPassword(
@@ -59,7 +59,6 @@ app.post("/checkIfUserExists", async (req, res) => {
    }
 });
 
-//########################################## ACCOUNT REQUESTS ################################
 app.post("/addAccountRequest", async (req, res) => {
    try {
       const newAccountRequest = await accountRequestController.addAccountRequest(req.body);
@@ -100,7 +99,6 @@ app.post("/rejectAccountRequestById", async (req, res) => {
    }
 });
 
-// Získanie všetkých žiadostí o účet
 app.get("/getAllAccountRequests", async (req, res) => {
    try {
       const allRequests = await accountRequestController.getAllAccountRequests();
@@ -110,15 +108,6 @@ app.get("/getAllAccountRequests", async (req, res) => {
    }
 });
 
-//########################################## BUILDINGS ################################
-
-/* 
-// Pridanie novej budovy
-{
-   "name" : "Názov budovy",
-   "location" : "Lokalita budovy"
-} 
-*/
 app.post("/addBuilding", async (req, res) => {
    try {
       const newBuilding = await buildingController.addBuilding(req.body);
@@ -128,34 +117,18 @@ app.post("/addBuilding", async (req, res) => {
    }
 });
 
-/* 
-// Úprava budovy podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_building",
-   updateData: {
-      name: "Nový názov budovy",
-      location: "Nová lokalita"
-   }
-}; 
-*/
 app.post("/updateBuilding", async (req, res) => {
    try {
       const updatedBuilding = await buildingController.updateBuilding(
          req.body.id,
          req.body.updateData
-      ); // updateBuilding
+      );
       res.status(200).send(updatedBuilding);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
 });
 
-/* 
-// Vymazanie budovy podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_building"
-}; 
-*/
 app.post("/deleteBuilding", async (req, res) => {
    try {
       const deletedBuilding = await buildingController.deleteBuilding(req.body.id);
@@ -165,7 +138,17 @@ app.post("/deleteBuilding", async (req, res) => {
    }
 });
 
-// Získanie všetkých budov
+app.post("/getBuildingWithAllNestedObjects", async (req, res) => {
+   try {
+      const buildingWithNestedObjects = await buildingController.getBuildingWithAllNestedObjects(
+         req.body.id
+      );
+      res.status(200).send(buildingWithNestedObjects);
+   } catch (error) {
+      res.status(500).send({ error: error.message });
+   }
+});
+
 app.get("/getAllBuildings", async (req, res) => {
    try {
       const allBuildings = await buildingController.getAllBuildings();
@@ -174,17 +157,6 @@ app.get("/getAllBuildings", async (req, res) => {
       res.status(500).send({ error: error.message });
    }
 });
-
-//########################################## ROOMS ################################
-
-/* 
-// Pridanie novej miestnosti
-{
-   "buildingId": "platne_mongo_id_z_kolekcie_building",
-   "roomName": "Názov miestnosti",
-   "roomLocation": "Poloha miestnosti"
-}
-*/
 
 app.post("/addRoom", async (req, res) => {
    try {
@@ -195,16 +167,6 @@ app.post("/addRoom", async (req, res) => {
    }
 });
 
-/* 
-// Úprava miestnosti podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_room",
-   updateData: {
-      roomName: "Nový názov miestnosti",
-      roomLocation: "Nová poloha miestnosti"
-   }
-}; 
-*/
 app.post("/editRoom", async (req, res) => {
    try {
       const updatedRoom = await roomController.editRoom(req.body.id, req.body.updateData);
@@ -214,12 +176,6 @@ app.post("/editRoom", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie miestnosti podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_room"
-}; 
-*/
 app.post("/deleteRoom", async (req, res) => {
    try {
       const deletedRoom = await roomController.deleteRoom(req.body.id);
@@ -229,7 +185,6 @@ app.post("/deleteRoom", async (req, res) => {
    }
 });
 
-// Získanie všetkých miestností
 app.get("/getAllRooms", async (req, res) => {
    try {
       const allRooms = await roomController.getAllRooms();
@@ -248,17 +203,6 @@ app.post("/getAllRoomsByBuildingId", async (req, res) => {
    }
 });
 
-//########################################## DESKS ################################
-
-/* 
-// Pridanie stola
-req.body = {
-   roomId: "platne_mongo_id_z_kolekcie_room",
-   deskName: "Názov stola",
-   peopleNumber: 4,
-   equipmentIds: ["platne_mongo_id_z_kolekcie_equipment1", "platne_mongo_id_z_kolekcie_equipment2"]
-}; 
-*/
 app.post("/addDesk", async (req, res) => {
    try {
       const newDesk = await deskController.addDesk(req.body);
@@ -268,16 +212,6 @@ app.post("/addDesk", async (req, res) => {
    }
 });
 
-/* 
-// Úprava stola
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_desk",
-   updateData: {
-      deskName: "Nový názov stola",
-      peopleNumber: 6
-   }
-}; 
-*/
 app.post("/editDesk", async (req, res) => {
    try {
       const updatedDesk = await deskController.editDesk(req.body.id, req.body.updateData);
@@ -287,13 +221,6 @@ app.post("/editDesk", async (req, res) => {
    }
 });
 
-/* 
-// Pridanie vybavenia k stolu
-req.body = {
-   deskId: "platne_mongo_id_z_kolekcie_desk",
-   equipmentId: "platne_mongo_id_z_kolekcie_equipment"
-}; 
-*/
 app.post("/addEquipmentToDesk", async (req, res) => {
    try {
       const updatedDesk = await deskController.addEquipment(req.body.deskId, req.body.equipmentId);
@@ -303,13 +230,6 @@ app.post("/addEquipmentToDesk", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie vybavenia zo stola
-req.body = {
-   deskId: "platne_mongo_id_z_kolekcie_desk",
-   equipmentId: "platne_mongo_id_z_kolekcie_equipment"
-}; 
-*/
 app.post("/removeEquipmentFromDesk", async (req, res) => {
    try {
       const updatedDesk = await deskController.deleteEquipment(
@@ -322,12 +242,6 @@ app.post("/removeEquipmentFromDesk", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie stola
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_desk"
-}; 
-*/
 app.post("/deleteDesk", async (req, res) => {
    try {
       const deletedDesk = await deskController.deleteDesk(req.body.id);
@@ -355,14 +269,6 @@ app.post("/getAllDesksByRoomId", async (req, res) => {
    }
 });
 
-//########################################## EQUIPMENTS ################################
-
-/* 
-// Pridanie nového vybavenia
-req.body = {
-   name: "Názov vybavenia"
-}; 
-*/
 app.post("/addEquipment", async (req, res) => {
    try {
       const newEquipment = await equipmentController.addEquipment(req.body);
@@ -371,13 +277,6 @@ app.post("/addEquipment", async (req, res) => {
       res.status(400).send({ error: error.message });
    }
 });
-
-/* 
-// Pridanie viacero vybavení
-req.body = {
-   equipments: [{"name":"Premietačka"},{"name":"Kávovar"}]
-}; 
-*/
 
 app.post("/addEquipments", async (req, res) => {
    try {
@@ -397,12 +296,6 @@ app.post("/findEquipmentByName", async (req, res) => {
    }
 });
 
-/* 
-// Pridanie viacero vybavení
-req.body = {
-   "equipments": ["Premietačka","Kávovar"]
-}
-*/
 app.post("/findEquipmentsByNames", async (req, res) => {
    try {
       const EquipmentIds = await equipmentController.findEquipmentsByNames(req.body);
@@ -412,12 +305,6 @@ app.post("/findEquipmentsByNames", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie vybavenia podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_equipment"
-}; 
-*/
 app.post("/deleteEquipment", async (req, res) => {
    try {
       const deletedEquipment = await equipmentController.deleteEquipment(req.body.id);
@@ -427,7 +314,6 @@ app.post("/deleteEquipment", async (req, res) => {
    }
 });
 
-// Získanie všetkého vybavenia
 app.get("/getAllEquipments", async (req, res) => {
    try {
       const allEquipment = await equipmentController.getAllEquipments();
@@ -437,17 +323,6 @@ app.get("/getAllEquipments", async (req, res) => {
    }
 });
 
-//########################################## RESERVATIONS ################################
-
-/* 
-// Pridanie rezervácie
-req.body = {
-   deskId: "platne_mongo_id_z_kolekcie_desk",
-   userId: "platne_mongo_id_z_kolekcie_user",
-   startDateTime: "2024-04-30T09:00:00Z",
-   endDateTime: "2024-04-30T17:00:00Z",
-}; 
-*/
 app.post("/addReservation", async (req, res) => {
    try {
       const newReservation = await reservationController.addReservation(req.body);
@@ -457,73 +332,35 @@ app.post("/addReservation", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie rezervácie
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_reservation",
-}; 
-*/
 app.post("/deleteReservation", async (req, res) => {
    try {
       const deletedReservation = await reservationController.deleteReservation(req.body.id);
-      res.status(200).send(deletedReservation);
+      res.status(201).send(deletedReservation);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
 });
 
-// Získanie všetkých rezervácií
-app.get("/getAllReservations", async (req, res) => {
+app.post("/getAllReservationsOfDeskArray", async (req, res) => {
    try {
-      const allReservations = await reservationController.getAllReservations();
-      res.status(200).send(allReservations);
-   } catch (error) {
-      res.status(500).send({ error: error.message });
-   }
-});
-
-/* 
-// Získanie všetkých rezervácií pre špecifického používateľa
-req.body = {
-   userId: "platne_mongo_id_z_kolekcie_user",
-}; 
-*/
-app.post("/getUserReservations", async (req, res) => {
-   try {
-      const userReservations = await reservationController.getUserReservations(req.body.userId);
-      res.status(200).send(userReservations);
+      const foundReservations = await reservationController.getAllReservationsOfDeskArray(
+         req.body.deskArray
+      );
+      res.status(201).send(foundReservations);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
 });
 
-/* 
-// Získanie všetkých rezervácií pre špecifický stôl
-req.body = {
-   deskId: "platne_mongo_id_z_kolekcie_desk",
-}; 
-*/
-app.post("/getDeskReservations", async (req, res) => {
+app.post("/getAllReservationsByUserId", async (req, res) => {
    try {
-      const deskReservations = await reservationController.getDeskReservations(req.body.deskId);
-      res.status(200).send(deskReservations);
+      const foundReservations = await reservationController.getAllReservationsByUserId(req.body.id);
+      res.status(201).send(foundReservations);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
 });
 
-//########################################## USERS ################################
-
-/* 
-// Pridanie nového používateľa
-req.body = {
-   isAdmin: false,
-   name: "Meno Používateľa",
-   email: "email@domena.com",
-   password: "heslo123",
-   phoneNumber: "0900123456"
-}; 
-*/
 app.post("/addUser", async (req, res) => {
    try {
       const newUser = await userController.addUser(req.body);
@@ -533,17 +370,6 @@ app.post("/addUser", async (req, res) => {
    }
 });
 
-/* 
-// Úprava existujúceho používateľa
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_user",
-   updateData: {
-      name: "Nové Meno",
-      password: "noveHeslo",
-      phoneNumber: "0911234567"
-   }
-}; 
-*/
 app.post("/editUser", async (req, res) => {
    try {
       const updatedUser = await userController.editUser(req.body.id, req.body.updateData);
@@ -553,12 +379,6 @@ app.post("/editUser", async (req, res) => {
    }
 });
 
-/* 
-// Vymazanie používateľa podľa ID
-req.body = {
-   id: "platne_mongo_id_z_kolekcie_user"
-}; 
-*/
 app.post("/getAllUsers", async (req, res) => {
    try {
       const deletedUser = await userController.deleteUser(req.body.id);
@@ -568,7 +388,6 @@ app.post("/getAllUsers", async (req, res) => {
    }
 });
 
-// Získanie všetkých používateľov
 app.get("/getAllUsers", async (req, res) => {
    try {
       const allUsers = await userController.getAllUsers();
@@ -577,8 +396,6 @@ app.get("/getAllUsers", async (req, res) => {
       res.status(500).send({ error: error.message });
    }
 });
-
-//########################################## Kombinované endpointy ################################
 
 app.listen(port, () => {
    console.log(`Server is running on port ${port}`);

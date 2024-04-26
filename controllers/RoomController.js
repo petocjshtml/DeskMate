@@ -3,15 +3,12 @@ const Building = require("../models/Building");
 const DeskController = require("./DeskController");
 
 class RoomController {
-   // Pridanie novej miestnosti, len ak existuje referenčná budova
    async addRoom(roomData) {
       try {
-         // Skontrolovat existenciu budovy
          const buildingExists = await Building.findById(roomData.buildingId);
          if (!buildingExists) {
             throw new Error("Building with the given ID does not exist");
          }
-         // Vytvorenie a ulozenie novej miestnosti
          const room = new Room(roomData);
          const savedRoom = await room.save();
          return savedRoom;
@@ -20,7 +17,6 @@ class RoomController {
       }
    }
 
-   // Úprava miestnosti podľa ID
    async editRoom(roomId, updateData) {
       try {
          const updatedRoom = await Room.findByIdAndUpdate(
@@ -37,7 +33,6 @@ class RoomController {
       }
    }
 
-   // Vymazanie miestnosti podľa ID
    async deleteRoom(roomId) {
       try {
          const deletedRoom = await Room.findByIdAndDelete(roomId);
@@ -62,7 +57,6 @@ class RoomController {
       }
    }
 
-   // Získanie všetkých miestností
    async getAllRooms() {
       try {
          const allRooms = await Room.find({});

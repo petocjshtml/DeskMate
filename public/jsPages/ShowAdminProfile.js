@@ -3,7 +3,6 @@ function ShowAdminProfile() {
       return;
    }
    const adminUserInfo = getLoginSession();
-   console.log(adminUserInfo);
    document.getElementById("render").innerHTML = `
     <div class="body-obsah">
     <nav class="navbar navbar-expand-lg" style="background: rgba(0, 0, 0, 0.5)">
@@ -28,7 +27,7 @@ function ShowAdminProfile() {
              <a class="nav-item nav-link text-white disabled" onclick="ShowAdminProfile()" href="#" style="color: white"
                 ><i class="fas fa-user-alt"></i> Profil</a
              >
-             <a class="nav-item nav-link text-success" onclick=";deleteUserSession();ShowMainPageHTML();" href="#" style="color: white"
+             <a class="nav-item nav-link text-success" onclick="deleteUserSession();ShowMainPageHTML();" href="#" style="color: white"
                 ><i class="fas fa-sign-out-alt"></i> Odhlásiť sa</a
              >
           </div>

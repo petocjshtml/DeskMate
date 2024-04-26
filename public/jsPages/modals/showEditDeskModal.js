@@ -24,15 +24,13 @@ function showEditDeskModal(desk) {
          <div class="form-group">
             <input type="hidden" value="${desk._id}">
             <label for="${nameInputId}">Desk Name (editable):</label>
-            <input type="text" id="${nameInputId}" value="${
-      desk.deskName
-   }" class="form-control modal-input" placeholder="Enter new value">
+            <input type="text" id="${nameInputId}" value="${desk.deskName}"
+            class="form-control modal-input" placeholder="Enter new value">
             </div>
             <div class="form-group">
                 <label for="${peopleNumInputId}">Number of people (editable):</label>
-                <input type="number" id="${peopleNumInputId}" value="${
-      desk.peopleNumber
-   }" class="form-control modal-input" placeholder="Enter new value">
+                <input type="number" id="${peopleNumInputId}" value="${desk.peopleNumber}"
+            class="form-control modal-input" placeholder="Enter new value">
             </div>
             <p>Equipments:</p>
             <div class="input-group mb-3">
@@ -90,7 +88,6 @@ function deleteEquipmentFromDeskHtmlModal(element) {
       deskId: desk_id,
       equipmentId: equipment_id,
    };
-
    postData(delete_req_json, "/removeEquipmentFromDesk")
       .then(() => {
          loadNewEquipmentModalHtml(delete_req_json.deskId);
@@ -119,8 +116,7 @@ function addEquipmentToDeskHtmlModal(element) {
                      equipmentId: equipment_id,
                   };
                   postData(equipmentToDesk, "/addEquipmentToDesk")
-                     .then((novyDesk) => {
-                        //console.log(novyDesk);
+                     .then(() => {
                         loadNewEquipmentModalHtml(desk_id);
                      })
                      .catch((error) => {
@@ -143,7 +139,6 @@ function loadNewEquipmentModalHtml(desk_id) {
    const desk_id_json = {
       id: desk_id,
    };
-
    postData(desk_id_json, "/selectDeskById")
       .then((updatedDesk) => {
          equipments_parent_element.innerHTML = "";
@@ -175,8 +170,6 @@ function saveChanges(button) {
    const desk_name_edited = document.getElementById(nameInputId).value;
    const desk_people_num_edited_str = document.getElementById(peopleNumInputId).value;
    const desk_people_num_edited = parseInt(desk_people_num_edited_str, 10);
-   console.log(roomId);
-
    const edit_desk_json = {
       id,
       updateData: {
@@ -185,8 +178,7 @@ function saveChanges(button) {
       },
    };
    postData(edit_desk_json, "/editDesk")
-      .then((data) => {
-         console.log(data);
+      .then(() => {
          loadRoomDesksFromDb(roomId);
       })
       .catch((error) => {

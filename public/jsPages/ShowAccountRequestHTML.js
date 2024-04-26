@@ -78,7 +78,7 @@ function sendRegistrationRequest() {
       .then((selected_user) => {
          if (Object.keys(selected_user).length === 0) {
             postData(registrationRequest, "/addAccountRequest")
-               .then((data) => {
+               .then(() => {
                   alert(
                      "Tvoja žiadosť bola poslana adminovi na schválenie. Ak bude schválená, príde ti email s prihlasovacími údajmi"
                   );

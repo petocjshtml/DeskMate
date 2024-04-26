@@ -52,3 +52,7 @@ body {
    overflow-y: auto;
    overflow-x: hidden;
 }
+
+.buildings-dropdow .dropdown-menu .dropdown-item {
+   padding-left: 12px;
+}

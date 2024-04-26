@@ -74,7 +74,7 @@ function LoginUser() {
             if (auth_status === "isAdmin") {
                ShowAdminBuildings();
             } else {
-               //Show User Pages Here
+               ShowUserReservationSystem();
             }
          }
       })

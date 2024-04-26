@@ -31,7 +31,7 @@ function showEditProfileModal(session) {
          </div>
          <div class="modal-footer">
              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-             <button type="button" onclick="SaveAdminProfileEditChanges()"  class="btn btn-primary" data-dismiss="modal">Save changes</button>
+             <button type="button" admin-id="${session._id}" onclick="SaveAdminProfileEditChanges(this)"  class="btn btn-primary" data-dismiss="modal">Save changes</button>
          </div>
          </div>
      </div>
@@ -39,9 +39,28 @@ function showEditProfileModal(session) {
      `;
 }
 
-function SaveAdminProfileEditChanges() {
+function SaveAdminProfileEditChanges(button) {
+   const adminId = button.getAttribute("admin-id");
    const name = document.getElementById("name_admin").value;
    const email = document.getElementById("email_admin").value;
    const phoneNumber = document.getElementById("phone_number_admin").value;
    const password = document.getElementById("password_admin").value;
+   const userUpdateJson = {
+      id: adminId,
+      updateData: {
+         name: name,
+         email: email,
+         password: password,
+         phoneNumber: phoneNumber,
+      },
+   };
+
+   postData(userUpdateJson, "/editUser")
+      .then((editedUser) => {
+         updateUserSession(editedUser);
+         ShowAdminProfile();
+      })
+      .catch((error) => {
+         console.error(error);
+      });
 }
