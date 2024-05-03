@@ -50,7 +50,7 @@ function ShowAdminBuildingRooms(building_link) {
     <div class="container-fluid">
         <form class="form-inline">
             <div class="form-group mb-3 mr-3">
-            <button type="button" onclick="AddRoom(this)" building-id="${buildingId}" class="btn btn-outline-success">
+            <button type="button" onclick="AddRoom(this)" building-id="${buildingId}" building-name="${buildingName}" class="btn btn-outline-success">
                 Pridať miestnosť
             </button>
             </div>
@@ -140,6 +140,7 @@ function ShowRoomsFromDb(rooms, buildingId, buildingName) {
 
 function AddRoom(button) {
    const buildingId = button.getAttribute("building-id");
+   const buildingName = button.getAttribute("building-name");
    const roomName = document.getElementById("add_room_name").value;
    const roomLocation = document.getElementById("add_room_name_location").value;
    const roomObj = {
@@ -149,7 +150,8 @@ function AddRoom(button) {
    };
    postData(roomObj, "/addRoom")
       .then(() => {
-         LoadRoomsFromDb(buildingId);
+         // LoadRoomsFromDb(buildingId);
+         LoadRoomsFromDb(buildingId, buildingName);
       })
       .catch(() => {
          alert("Chyba pri pridávaní miestnosti");

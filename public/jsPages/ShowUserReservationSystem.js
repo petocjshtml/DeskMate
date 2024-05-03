@@ -161,6 +161,10 @@ function ShowUserReservationSystem() {
          </div>
       </div>
    `;
+
+   //aby nemohol používateľ vybrať starší dátum
+   var today = new Date().toISOString().slice(0, 10);
+   document.getElementById("datePicker").setAttribute("min", today);
    showCurrentDate();
    loadBuildingsFromDbUserUI();
    loadDropdownTimes(getHalfHourTimes());
@@ -734,23 +738,38 @@ function OpenRoomReservationUI(button) {
    });
 }
 
+function isFutureDate(inputDate, inputTime) {
+   const dateTimeInput = new Date(`${inputDate}T${inputTime}:00`);
+   const now = new Date();
+   return dateTimeInput > now;
+}
+
 function generateReservationButtonsHtml(reservations) {
+   const date = getSelectedDate();
    var generatedReservationButtonsHtml = "";
    const times = getHalfHourTimes();
    times.forEach((time) => {
-      if (reservations.includes(time)) {
-         generatedReservationButtonsHtml += `
-         <button type="button" class="btn btn-outline-danger disabled mr-3 mb-3" 
-         style="border:1px solid red;color:red;">
-         ${time}
-         </button>
-         `;
+      if (isFutureDate(date, time)) {
+         if (reservations.includes(time)) {
+            generatedReservationButtonsHtml += `
+            <button type="button" class="btn btn-outline-danger disabled mr-3 mb-3" 
+            style="border:1px solid red;color:red;">
+            ${time}
+            </button>
+            `;
+         } else {
+            generatedReservationButtonsHtml += `
+            <button type="button" class="btn btn-outline-success mr-3 mb-3" onclick="chooseReservationTime(this)">
+            ${time}
+            </button>
+            `;
+         }
       } else {
          generatedReservationButtonsHtml += `
-         <button type="button" class="btn btn-outline-success mr-3 mb-3" onclick="chooseReservationTime(this)">
-         ${time}
-         </button>
-         `;
+            <button type="button" class="btn btn-outline-warning disabled mr-3 mb-3"> 
+            ${time}
+            </button>
+            `;
       }
    });
    return generatedReservationButtonsHtml;

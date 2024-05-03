@@ -222,6 +222,7 @@ function addDesk(button) {
                postData(new_desk, "/addDesk")
                   .then(() => {
                      loadRoomDesksFromDb(roomId);
+                     loadEquipmentsFromDb();
                   })
                   .catch((error) => {
                      console.error(error);

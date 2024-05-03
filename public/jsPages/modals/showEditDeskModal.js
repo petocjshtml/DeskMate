@@ -180,6 +180,7 @@ function saveChanges(button) {
    postData(edit_desk_json, "/editDesk")
       .then(() => {
          loadRoomDesksFromDb(roomId);
+         loadEquipmentsFromDb();
       })
       .catch((error) => {
          console.error(error);
