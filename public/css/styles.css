@@ -56,3 +56,8 @@ body {
 .buildings-dropdow .dropdown-menu .dropdown-item {
    padding-left: 12px;
 }
+
+.form-check-input:checked + .form-check-label::before {
+   background-color: green !important; /* Zelená farba */
+   border-color: green !important; /* Farba okraja */
+}

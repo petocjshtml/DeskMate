@@ -1,36 +1,20 @@
 const Reservation = require("../models/Reservation");
-const Desk = require("../models/Desk");
 const User = require("../models/User");
+const Desk = require("../models/Desk");
 
 class ReservationController {
    async addReservation(reservationData) {
       try {
-         const { deskId, userId, dateTime } = reservationData;
-         const deskExists = await Desk.findById(deskId);
-         const userExists = await User.findById(userId);
-         if (!deskExists || !userExists) {
-            throw new Error("Desk or User does not exist");
-         }
-         const requestTime = new Date(dateTime);
-         const startTime = new Date(requestTime.getTime() - 30 * 55000);
-         const endTime = new Date(requestTime.getTime() + 30 * 55000);
-         const overlappingReservation = await Reservation.findOne({
+         const { deskId, timeFrom, timeTo } = reservationData;
+         const existingReservations = await Reservation.find({
             deskId: deskId,
-            dateTime: {
-               $gte: startTime,
-               $lt: endTime,
-            },
+            $or: [{ timeFrom: { $lt: timeTo }, timeTo: { $gt: timeFrom } }],
          });
-         if (overlappingReservation) {
-            throw new Error(
-               "A reservation already exists within 30 minutes of the requested time slot."
-            );
+
+         if (existingReservations.length > 0) {
+            throw new Error("There is already a reservation for the selected time interval.");
          }
-         const reservation = new Reservation({
-            deskId,
-            userId,
-            dateTime: requestTime,
-         });
+         const reservation = new Reservation(reservationData);
          const savedReservation = await reservation.save();
          return savedReservation;
       } catch (error) {
@@ -42,7 +26,7 @@ class ReservationController {
       try {
          const deletedReservation = await Reservation.findByIdAndDelete(reservationId);
          if (!deletedReservation) {
-            throw new Error("Reservation not found");
+            throw new Error(`Reservation with ID ${reservationId} not found`);
          }
          return deletedReservation;
       } catch (error) {
@@ -50,7 +34,7 @@ class ReservationController {
       }
    }
 
-   async getAllReservationsByUserId(userId) {
+   async getReservationsByUserId(userId) {
       try {
          const userExists = await User.findById(userId);
          if (!userExists) {
@@ -81,6 +65,38 @@ class ReservationController {
          return reservations;
       } catch (error) {
          throw new Error(`Error retrieving reservations by user ID: ${error.message}`);
+      }
+   }
+
+   async getReservationsByDeskId(deskId) {
+      try {
+         const deskExists = await Desk.findById(deskId);
+         if (!deskExists) {
+            throw new Error("Desk does not exist");
+         }
+         const reservations = await Reservation.find({ deskId: deskId })
+            .populate({
+               path: "deskId",
+               populate: {
+                  path: "roomId",
+                  model: "Room",
+                  populate: {
+                     path: "buildingId",
+                     model: "Building",
+                  },
+               },
+            })
+            .populate({
+               path: "deskId",
+               populate: {
+                  path: "equipmentIds",
+                  model: "Equipment",
+               },
+            })
+            .populate("userId");
+         return reservations;
+      } catch (error) {
+         throw new Error(`Error finding reservations by desk ID: ${error.message}`);
       }
    }
 

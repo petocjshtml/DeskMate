@@ -80,7 +80,8 @@ function checkUnloggedSession() {
          ShowAdminBuildings();
          return false;
       } else {
-         ShowUserReservations();
+         //ShowUserReservations();
+         ShowUserReservationSystem();
          return false;
       }
    }

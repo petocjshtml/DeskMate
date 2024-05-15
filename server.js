@@ -326,7 +326,7 @@ app.get("/getAllEquipments", async (req, res) => {
 app.post("/addReservation", async (req, res) => {
    try {
       const newReservation = await reservationController.addReservation(req.body);
-      res.status(201).send(newReservation);
+      res.status(200).send(newReservation);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
@@ -335,7 +335,35 @@ app.post("/addReservation", async (req, res) => {
 app.post("/deleteReservation", async (req, res) => {
    try {
       const deletedReservation = await reservationController.deleteReservation(req.body.id);
-      res.status(201).send(deletedReservation);
+      res.status(200).send(deletedReservation);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/adminDeleteReservation", async (req, res) => {
+   try {
+      const deletedReservation = await reservationController.deleteReservation(req.body.id);
+      await emailSender.notificateUserAboutReservationDestroy(req.body);
+      res.status(200).send(deletedReservation);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/getReservationsByUserId", async (req, res) => {
+   try {
+      const userReservations = await reservationController.getReservationsByUserId(req.body.id);
+      res.status(200).send(userReservations);
+   } catch (error) {
+      res.status(400).send({ error: error.message });
+   }
+});
+
+app.post("/getReservationsByDeskId", async (req, res) => {
+   try {
+      const deskReservations = await reservationController.getReservationsByDeskId(req.body.id);
+      res.status(200).send(deskReservations);
    } catch (error) {
       res.status(400).send({ error: error.message });
    }
@@ -346,15 +374,6 @@ app.post("/getAllReservationsOfDeskArray", async (req, res) => {
       const foundReservations = await reservationController.getAllReservationsOfDeskArray(
          req.body.deskArray
       );
-      res.status(201).send(foundReservations);
-   } catch (error) {
-      res.status(400).send({ error: error.message });
-   }
-});
-
-app.post("/getAllReservationsByUserId", async (req, res) => {
-   try {
-      const foundReservations = await reservationController.getAllReservationsByUserId(req.body.id);
       res.status(201).send(foundReservations);
    } catch (error) {
       res.status(400).send({ error: error.message });

@@ -6,7 +6,6 @@ function ShowAdminRoomDesks(room_link) {
    const roomName = room_link.getAttribute("room-name");
    const buildingName = room_link.getAttribute("building-name");
    const buildingId = room_link.getAttribute("building-id");
-   console.log(roomName, buildingName);
    document.getElementById("render").innerHTML = `
      <div class="body-obsah">
      <nav class="navbar navbar-expand-lg" style="background: rgba(0, 0, 0, 0.5)">
@@ -39,7 +38,7 @@ function ShowAdminRoomDesks(room_link) {
      </nav>
  
      <nav aria-label="breadcrumb">
-     <ol class="breadcrumb mt-1" style="background: rgba(0, 0, 0, 0.5)">
+     <ol class="breadcrumb mt-1" id="infoNavigation" style="background: rgba(0, 0, 0, 0.5)">
          <li class="breadcrumb-item text-success">Root</li>
          <li class="breadcrumb-item" >
          <a href="#" onclick="ShowAdminBuildings()" class="text-success">Budovy</a>
@@ -266,15 +265,28 @@ function loadRoomDesksFromDb(room_id) {
       });
 }
 
+function getLinkInfo() {
+   const infoHtmlParent = document.getElementById("infoNavigation");
+   const links = infoHtmlParent.querySelectorAll("a");
+   const buildingId = links[1].getAttribute("building-id");
+   const buildingName = links[1].getAttribute("building-name");
+   const roomName = links[2].innerHTML.trim();
+   return { buildingId: buildingId, buildingName: buildingName, roomName: roomName };
+}
+
 function showRoomDesksFromDb(roomDesksFromDb) {
-   console.log(roomDesksFromDb);
    let parent_element = document.getElementById("parent");
+   const ObjectsInfo = getLinkInfo();
    parent_element.innerHTML = "";
    roomDesksFromDb.forEach((roomDesk) => {
       parent_element.innerHTML += `
       <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
             <div class="desk-mate-karta ce1">
-                <a href="#" style="text-decoration: none">
+                <a href="#" desk-id="${roomDesk._id}" desk-name="${roomDesk.deskName}" 
+                room-id="${roomDesk.roomId}" room-name="${ObjectsInfo.roomName}"
+                building-id="${ObjectsInfo.buildingId}" building-name="${ObjectsInfo.buildingName}"
+                onclick="event.preventDefault(); ShowAdminDeskReservations(this);"
+                 style="text-decoration: none">
                 <h3 class="text-white ce2">${roomDesk.deskName}</h3>
                 </a>
                 <hr style="border: 2px solid #28a745" />

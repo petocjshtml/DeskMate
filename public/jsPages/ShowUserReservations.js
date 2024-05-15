@@ -60,7 +60,7 @@ function loadUserReservations() {
    const userIdJson = {
       id: userId,
    };
-   postData(userIdJson, "/getAllReservationsByUserId")
+   postData(userIdJson, "/getReservationsByUserId")
       .then((reservations) => {
          showUserReservations(formatUserReservations(reservations));
       })
@@ -81,14 +81,16 @@ function formatDateTime(isoString) {
 
 function formatUserReservations(reservations) {
    const formattedObject = reservations.map((reservation) => {
-      const formatedTime = formatDateTime(reservation.dateTime);
+      const formatedTimeFrom = formatDateTime(reservation.timeFrom);
+      const formatedTimeTo = formatDateTime(reservation.timeTo);
       return {
          reservationId: reservation._id,
          buildingName: reservation.deskId.roomId.buildingId.name,
          roomName: reservation.deskId.roomId.roomName,
          deskName: reservation.deskId.deskName,
-         date: formatedTime.date,
-         time: formatedTime.time,
+         date: formatedTimeFrom.date,
+         timeFrom: formatedTimeFrom.time,
+         timeTo: formatedTimeTo.time,
       };
    });
    return formattedObject;
@@ -113,7 +115,9 @@ function showUserReservations(reservations_formatted) {
                 <hr style="border: 2px solid #28a745" />
                 <h5><span class="text-success">Dátum:</span> ${reservation.date}</h5>
                
-                <h5 class="text-success" style="margin-top:15px;">Čas: <span class="text-white mb-2">${reservation.time}</span></h5>
+                <h5 class="text-success" style="margin-top:15px;">Čas: <span class="text-white mb-2">
+                ${reservation.timeFrom} - ${reservation.timeTo}
+                </span></h5>
                 
                 
                 <button type="button" reservation-id="${reservation.reservationId}" 
@@ -138,5 +142,4 @@ function destroyReservation(button) {
       .catch((error) => {
          console.error(error);
       });
-   console.log(reservationId);
 }

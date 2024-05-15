@@ -139,7 +139,6 @@ function DeleteBuilding(button) {
 function LoadBuildingsFromDb() {
    getData("/getAllBuildings")
       .then((data) => {
-         console.log(data);
          showBuildingsFromDb(data);
       })
       .catch((error) => {

@@ -59,6 +59,36 @@ class EmailSender {
          console.error(error);
       }
    }
+
+   async notificateUserAboutReservationDestroy(deleted_reservation_info) {
+      var htmlContent = `<h1>Vaša rezervácia s danými údajmi bola zrušená.</h1> `;
+      htmlContent += `<h3>Rezervačné info</h3>`;
+      htmlContent += `<ul>`;
+      htmlContent += `<li>Názov budovy: ${deleted_reservation_info.buildingName}</li>`;
+      htmlContent += `<li>Názov miestnosti: ${deleted_reservation_info.roomName}</li>`;
+      htmlContent += `<li>Názov stolu: ${deleted_reservation_info.deskName}</li>`;
+      htmlContent += `<li>Dátum rezervácie: ${deleted_reservation_info.date}</li>`;
+      htmlContent += `<li>Čas rezervácie: ${deleted_reservation_info.timeFrom} - ${deleted_reservation_info.timeTo}</li>`;
+      htmlContent += `<li>Meno admina, ktorý zrušil rezerváciu: ${deleted_reservation_info.adminName}</li>`;
+      htmlContent += `<li>Kontakt na admina, ktorý zrušil rezerváciu: ${deleted_reservation_info.adminEmail}</li>`;
+      htmlContent += `</ul>`;
+      var mail_setup = {
+         from: {
+            name: "Desk Mate",
+            address: this.config.sender_email,
+         },
+         to: [deleted_reservation_info.userEmail],
+         subject: "Info o zrušení rezervácie!",
+         text: "",
+         html: htmlContent,
+      };
+      try {
+         await this.transporter.sendMail(mail_setup);
+         console.log("Email has been sent!");
+      } catch (error) {
+         console.error(error);
+      }
+   }
 }
 
 module.exports = EmailSender;
