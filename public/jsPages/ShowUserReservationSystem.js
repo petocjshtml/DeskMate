@@ -959,15 +959,16 @@ function showRoomNameInNavigation(roomName) {
    `;
 }
 
-function normalizeReservationTimesForDeskUI(deskReservations) {
-   return deskReservations.flatMap((reservation) => {
+function normalizeReservationTimesForDeskUI(desk) {
+   return desk.reservations.flatMap((reservation) => {
       const result = [];
       let currentTime = new Date(reservation.timeFrom);
       const endTime = new Date(reservation.timeTo);
 
       while (currentTime < endTime) {
          result.push({
-            reservatorName: reservation.userId.name,
+            reservator: reservation.userId,
+            desk: desk,
             timeButton: currentTime.toISOString().substring(11, 16),
          });
          currentTime.setUTCMinutes(currentTime.getUTCMinutes() + 30);
@@ -988,7 +989,7 @@ function OpenRoomReservationUI(button) {
       if (equpipmentNames.length === 0) {
          equpipmentNames = "Bez vybavenia";
       }
-      const deskReservations = normalizeReservationTimesForDeskUI(desk.reservations);
+      const deskReservations = normalizeReservationTimesForDeskUI(desk);
       parent_element.innerHTML += `
        <div class="col-sm-12  mb-3">
           <div class="desk-mate-karta" >
@@ -1054,13 +1055,14 @@ function isTimePeriodBeforeMidday() {
 function chooseTimes(button) {
    const timeButtonsAll = button.parentNode.parentNode
       .querySelector(".confirmTimeButtons")
-      .querySelectorAll("button");
+      .querySelectorAll(".timeBtn");
    Array.from(timeButtonsAll).forEach((timeButton) => {
       if (!timeButton.classList.contains("btn-outline-warning")) {
          timeButton.classList.remove("btn-success");
          timeButton.classList.add("btn-outline-success");
       }
    });
+   console.log(timeButtonsAll.length);
 
    if (button.name === "doobeda") {
       for (let index = 0; index < 24; index++) {
@@ -1122,21 +1124,27 @@ function getReservationButtonsHtml(reservations) {
    times.forEach((time) => {
       const timeReservation = reservations.find((reservation) => reservation.timeButton === time);
       if (timeReservation) {
-         generatedReservationButtonsHtml += `
-               <button type="button" class="btn btn-outline-danger mr-3 mb-3" title="${timeReservation.reservatorName}" disabled> 
-               ${time}
-               </button>
-               `;
+         var desk_id = timeReservation.desk._id;
+         var modal_id = `modal-${desk_id}-${time.replace(":", "")}`;
+         var modal_label_id = `modal-label-${modal_id}`;
+         var info_obj = {};
+         info_obj.modalId = modal_id;
+         info_obj.modalLabelId = modal_label_id;
+         info_obj.reservatorName = timeReservation.reservator.name;
+         info_obj.reservatiorPhone = timeReservation.reservator.phoneNumber;
+         info_obj.reservatorEmail = timeReservation.reservator.email;
+         info_obj.time = time;
+         generatedReservationButtonsHtml += `${showUserInfoModal(info_obj)}`;
       } else {
          if (isFutureDate(date, time)) {
             generatedReservationButtonsHtml += `
-               <button type="button" isSelected="false" class="btn btn-outline-success mr-3 mb-3" onclick="selectReservationTime(this)">
+               <button type="button" isSelected="false" class="btn btn-outline-success mr-3 mb-3 timeBtn" onclick="selectReservationTime(this)">
                ${time}
                </button>
                `;
          } else {
             generatedReservationButtonsHtml += `
-               <button type="button" class="btn btn-outline-warning mr-3 mb-3" disabled> 
+               <button type="button" class="btn btn-outline-warning mr-3 mb-3 timeBtn" disabled> 
                ${time}
                </button>
                `;
