@@ -3,8 +3,6 @@ function showEditDeskModal(desk) {
    const equipmentsID = `equipments-${desk._id}`;
    const equipmentInputId = `equipmentInput-${desk._id}`;
    const nameInputId = `equipmentNameInput-${desk._id}`;
-   const peopleNumInputId = `equipmentPeopleNumInput-${desk._id}`;
-
    return `
      <!-- Button trigger modal -->
      <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#${modalID}">
@@ -25,11 +23,6 @@ function showEditDeskModal(desk) {
             <input type="hidden" value="${desk._id}">
             <label for="${nameInputId}">Desk Name (editable):</label>
             <input type="text" id="${nameInputId}" value="${desk.deskName}"
-            class="form-control modal-input" placeholder="Enter new value">
-            </div>
-            <div class="form-group">
-                <label for="${peopleNumInputId}">Number of people (editable):</label>
-                <input type="number" id="${peopleNumInputId}" value="${desk.peopleNumber}"
             class="form-control modal-input" placeholder="Enter new value">
             </div>
             <p>Equipments:</p>
@@ -166,15 +159,11 @@ function saveChanges(button) {
    const id = button.getAttribute("desk-id");
    const roomId = button.getAttribute("room-id");
    const nameInputId = `equipmentNameInput-${id}`;
-   const peopleNumInputId = `equipmentPeopleNumInput-${id}`;
    const desk_name_edited = document.getElementById(nameInputId).value;
-   const desk_people_num_edited_str = document.getElementById(peopleNumInputId).value;
-   const desk_people_num_edited = parseInt(desk_people_num_edited_str, 10);
    const edit_desk_json = {
       id,
       updateData: {
          deskName: desk_name_edited,
-         peopleNumber: desk_people_num_edited,
       },
    };
    postData(edit_desk_json, "/editDesk")

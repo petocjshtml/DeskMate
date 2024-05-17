@@ -1,8 +1,6 @@
 function showUserInfoModal(info_obj) {
-   console.log(info_obj);
    return `
-    <!-- Button trigger modal -->
-
+        <!-- Button trigger modal -->
         <button type="button" data-toggle="modal" data-target="#${info_obj.modalId}"
         class="btn btn-outline-danger mr-3 mb-3 timeBtn" title="${info_obj.reservatorName}"> 
         ${info_obj.time}
@@ -20,14 +18,12 @@ function showUserInfoModal(info_obj) {
                 <div class="modal-body" style="color:black">
                 <span><b>Rezervátor:</b> ${info_obj.reservatorName}</span> <br>
                 <span><b>Email:</b> ${info_obj.reservatorEmail}</span> <br>
-
                 </div>
                 <div class="modal-footer">
                 <button type="button" class="btn btn-primary" 
                 onclick="window.location.href='tel:${info_obj.reservatiorPhone}'">
                 Kontaktuj ${info_obj.reservatiorPhone}</button>
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Zavrieť</button>
-
                 </div>
             </div>
         </div>

@@ -9,6 +9,7 @@ const reservationSchema = new mongoose.Schema({
 });
 
 reservationSchema.pre("save", function (next) {
+   //nastavenie času pre automatické mazanie rezervácie
    //- 2 hodiny - mongo systém číta časy dve hodiny dozadu
    this.expiresAt = new Date(this.timeTo.getTime() - 7200000);
    next();

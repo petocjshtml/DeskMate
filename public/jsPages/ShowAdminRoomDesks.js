@@ -74,21 +74,6 @@ function ShowAdminRoomDesks(room_link) {
              </div>
  
              <div class="form-group mb-3 mr-3">
-             <span class="text-white">Počet ľudí:</span>
-             </div>
- 
-             <div class="form-group mb-3 mr-3">
-             <input
-                 id="number_of_people"
-                 type="number"
-                 value="4"
-                 class="form-control"
-                 placeholder="Kapacita stolu"
-                 style="width: 100px"
-             />
-             </div>
- 
-             <div class="form-group mb-3 mr-3">
              <div class="input-group">
              <input type="text" class="form-control" id="equipment_input" placeholder="Nové vybavenie" aria-label="Text input with dropdown button">
              <div class="input-group-append">
@@ -195,18 +180,14 @@ function deleteEquipment() {
 function addDesk(button) {
    const roomId = button.getAttribute("room-id");
    const deskName = document.getElementById("desk_name").value;
-   const numberOfPeople = document.getElementById("number_of_people").value;
    const equipmentElements = document.querySelectorAll(".prepared-equipment");
    let equipments = [];
-
    equipmentElements.forEach((element) => {
       equipments.push(element.textContent.trim());
    });
-
    const dataToPost = {
       equipments: equipments,
    };
-
    postData(dataToPost, "/addEquipments")
       .then(() => {
          postData(dataToPost, "/findEquipmentsByNames")
@@ -215,7 +196,6 @@ function addDesk(button) {
                const new_desk = {
                   roomId,
                   deskName,
-                  peopleNumber: parseInt(numberOfPeople, 10),
                   equipmentIds: eq_id_array,
                };
                postData(new_desk, "/addDesk")
@@ -255,7 +235,6 @@ function loadRoomDesksFromDb(room_id) {
    let room_desks_req_obj = {
       id: room_id,
    };
-
    postData(room_desks_req_obj, "/getAllDesksByRoomId")
       .then((roomDesksFromDb) => {
          showRoomDesksFromDb(roomDesksFromDb);
@@ -290,7 +269,6 @@ function showRoomDesksFromDb(roomDesksFromDb) {
                 <h3 class="text-white ce2">${roomDesk.deskName}</h3>
                 </a>
                 <hr style="border: 2px solid #28a745" />
-                <h5>Počet ľudí: <span class="text-success ce3">${roomDesk.peopleNumber}</span></h5>
                 <ul>
                 ${getEquipmentsHtml(roomDesk.equipmentIds)}
                 </ul>

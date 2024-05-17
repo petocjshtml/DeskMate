@@ -33,7 +33,6 @@ function ShowAdminProfile() {
           </div>
        </div>
     </nav>
-
     <nav aria-label="breadcrumb">
        <ol class="breadcrumb mt-1" style="background: rgba(0, 0, 0, 0.5)">
           <li class="breadcrumb-item text-success">Root</li>
@@ -42,9 +41,7 @@ function ShowAdminProfile() {
           </li>
        </ol>
     </nav>
-
     <hr style="border: 2px solid #28a745" />
-
     <div class="container-fluid">
        <div class="row mt-1">
           <div class="col-sm-12 col-md-6 mb-3">

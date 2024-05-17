@@ -7,7 +7,6 @@ async function getData(endpoint_url) {
             "Content-Type": "application/json",
          },
       });
-
       if (!response.ok) {
          throw new Error(`HTTP error! status: ${response.status}`);
       }
@@ -16,14 +15,3 @@ async function getData(endpoint_url) {
       console.error("There was a problem with the fetch operation:", error);
    }
 }
-
-/* 
-//volanie funkcie
-getData("/")
-   .then((data) => {
-      console.log(data);
-   })
-   .catch((error) => {
-      console.error(error);
-   }); 
-*/

@@ -150,7 +150,6 @@ function AddRoom(button) {
    };
    postData(roomObj, "/addRoom")
       .then(() => {
-         // LoadRoomsFromDb(buildingId);
          LoadRoomsFromDb(buildingId, buildingName);
       })
       .catch(() => {
@@ -173,8 +172,6 @@ function EditRoom(button) {
          roomLocation: new_location,
       },
    };
-   console.log(room_edited);
-
    postData(room_edited, "/editRoom")
       .then(() => {
          LoadRoomsFromDb(buildingId, buildingName);
@@ -191,7 +188,6 @@ function DeleteRoom(button) {
    const delete_info = {
       id: id_to_delete,
    };
-
    postData(delete_info, "/deleteRoom")
       .then(() => {
          LoadRoomsFromDb(buildingId);

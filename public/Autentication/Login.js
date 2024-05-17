@@ -77,10 +77,11 @@ function checkUserSession() {
 function checkUnloggedSession() {
    if (authSession() !== "isUnlogged") {
       if (authSession() === "isAdmin") {
+         //prednastavená podstránka na zobrazenie, ak je admin prihlásený
          ShowAdminBuildings();
          return false;
       } else {
-         //ShowUserReservations();
+         //prednastavená podstránka na zobrazenie, ak je používateľ prihlásený
          ShowUserReservationSystem();
          return false;
       }

@@ -126,7 +126,6 @@ function DeleteBuilding(button) {
    const delete_info = {
       id: id_to_delete,
    };
-
    postData(delete_info, "/deleteBuilding")
       .then(() => {
          LoadBuildingsFromDb();
@@ -148,7 +147,6 @@ function LoadBuildingsFromDb() {
 
 function showBuildingsFromDb(buildings) {
    let parent_element = document.getElementById("parent");
-   //Aby sa nepridali rovnaké objekty
    parent_element.innerHTML = "";
    buildings.forEach((building) => {
       parent_element.innerHTML += `

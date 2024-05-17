@@ -110,16 +110,12 @@ function showUserReservations(reservations_formatted) {
                 <ul>
                   <li><h5 class="text-success">${reservation.roomName}</h5></li>
                   <li><h5 class="text-white">${reservation.deskName}</h5></li>
-                 
                 </ul>
                 <hr style="border: 2px solid #28a745" />
                 <h5><span class="text-success">Dátum:</span> ${reservation.date}</h5>
-               
                 <h5 class="text-success" style="margin-top:15px;">Čas: <span class="text-white mb-2">
                 ${reservation.timeFrom} - ${reservation.timeTo}
                 </span></h5>
-                
-                
                 <button type="button" reservation-id="${reservation.reservationId}" 
                 class="btn btn-outline-danger mt-1"
                 onclick="destroyReservation(this)"

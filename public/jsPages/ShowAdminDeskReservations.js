@@ -169,7 +169,6 @@ function destroyDeskReservationByAdmin(button) {
    const date = button.getAttribute("date");
    const timeFrom = button.getAttribute("time-from");
    const timeTo = button.getAttribute("time-to");
-
    const deleteInfoJson = {
       id,
       deskId,
@@ -183,7 +182,6 @@ function destroyDeskReservationByAdmin(button) {
       timeFrom,
       timeTo,
    };
-
    postData(deleteInfoJson, "/adminDeleteReservation")
       .then(() => {
          loadDeskReservations(deskId);

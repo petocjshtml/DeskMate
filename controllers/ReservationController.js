@@ -10,7 +10,6 @@ class ReservationController {
             deskId: deskId,
             $or: [{ timeFrom: { $lt: timeTo }, timeTo: { $gt: timeFrom } }],
          });
-
          if (existingReservations.length > 0) {
             throw new Error("There is already a reservation for the selected time interval.");
          }
@@ -40,7 +39,6 @@ class ReservationController {
          if (!userExists) {
             throw new Error("User does not exist");
          }
-
          const reservations = await Reservation.find({ userId: userId })
             .populate({
                path: "deskId",
@@ -61,7 +59,6 @@ class ReservationController {
                },
             })
             .populate("userId");
-
          return reservations;
       } catch (error) {
          throw new Error(`Error retrieving reservations by user ID: ${error.message}`);

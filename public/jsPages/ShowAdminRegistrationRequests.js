@@ -66,7 +66,6 @@ function LoadRegistrationRequestsFromDb() {
 
 function showRegistrationRequestsFromDb(registration_requests) {
    let parent_element = document.getElementById("parent");
-   //Aby sa nepridali rovnaké objekty
    parent_element.innerHTML = "";
    registration_requests.forEach((registration_request) => {
       parent_element.innerHTML += `
@@ -94,7 +93,6 @@ function approveAccountRequest(button) {
    const approve_info = {
       id: id_to_approve,
    };
-
    postData(approve_info, "/approveAccountRequestById")
       .then(() => {
          LoadRegistrationRequestsFromDb();
@@ -110,7 +108,6 @@ function rejectAccountRequest(button) {
    const reject_info = {
       id: id_to_reject,
    };
-
    postData(reject_info, "/rejectAccountRequestById")
       .then(() => {
          LoadRegistrationRequestsFromDb();

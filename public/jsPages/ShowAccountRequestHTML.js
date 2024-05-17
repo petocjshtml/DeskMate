@@ -69,11 +69,9 @@ function sendRegistrationRequest() {
       isApprovedByAdmin: false,
       isVerifiedByUser: false,
    };
-
    const email_json = {
       email: email,
    };
-
    postData(email_json, "/checkIfUserExists")
       .then((selected_user) => {
          if (Object.keys(selected_user).length === 0) {

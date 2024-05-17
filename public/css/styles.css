@@ -38,7 +38,7 @@ body {
    background: rgba(0, 0, 0, 0.5);
 }
 
-/* štýl karty */
+/* štýl karty a ďalšie */
 .desk-mate-karta {
    border: 2px solid #28a745;
    background: rgba(0, 0, 0, 0.5);
@@ -58,6 +58,6 @@ body {
 }
 
 .form-check-input:checked + .form-check-label::before {
-   background-color: green !important; /* Zelená farba */
-   border-color: green !important; /* Farba okraja */
+   background-color: green !important;
+   border-color: green !important;
 }

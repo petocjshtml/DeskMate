@@ -17,7 +17,7 @@ function ShowUserReservationSystem() {
                aria-label="Toggle navigation"
                style="border-color: #28a745"
             >
-               <span class="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                <div class="navbar-nav">
@@ -34,7 +34,6 @@ function ShowUserReservationSystem() {
                </div>
             </div>
          </nav>
-
          <nav aria-label="breadcrumb">
             <ol class="breadcrumb mt-1" id="navigationUserUI" style="background: rgba(0, 0, 0, 0.5)">
                <li class="breadcrumb-item text-success">${userInfo.name}</li>
@@ -44,7 +43,6 @@ function ShowUserReservationSystem() {
                </li>
             </ol>
          </nav>
-
          <div class="container-fluid">
             <div id="reservationFilterUserUI">
             <form class="form-inline">
@@ -56,7 +54,6 @@ function ShowUserReservationSystem() {
                <input type="date" oninput="inputValueChanges()" class="form-control " id="datePicker" name="datePicker" aria-label="Dátum" aria-describedby="basic-addon1"/>
             </div>
             </div>
-
                <div class="form-group mb-3 mr-3">
                   <div class="dropdown buildings-dropdown">
                      <button
@@ -68,7 +65,6 @@ function ShowUserReservationSystem() {
                         aria-expanded="false"
                         style="min-width: 206px; text-align: left;"
                      >
-                        
                      </button>
                      <div class="buildings-dropdown">
                         <div
@@ -81,17 +77,6 @@ function ShowUserReservationSystem() {
                     
                   </div>
                </div>
-
-               <div class="form-group mb-3 mr-3">
-               <div class="input-group">
-                  <div class="input-group-prepend">
-                     <span class="input-group-text bg-success text-white" >Počet ľudí</span>
-                  </div>
-                  <input id="numberOfPeopleInput" oninput="inputValueChanges()" type="number" value="4" min="1" class="form-control " 
-                  style="width: 60px;" aria-label="Počet ľudí" aria-describedby="basic-addon1"/>
-               </div>
-               </div>
-
                <div class="form-group mb-3 mr-3">
                <div class="input-group">
                   <div class="input-group-prepend">
@@ -101,12 +86,10 @@ function ShowUserReservationSystem() {
                   style="width: 60px;" aria-label="Počet ľudí" aria-describedby="basic-addon1"/>
                </div>
                </div>
-
                <div class="form-group mb-3 mr-3">
                <input type="text" id="roomFilterUserUI"  class="form-control"
                 oninput="inputValueChanges()" placeholder="Filter miestnosti"/>
                </div>
-
                <div class="form-group mb-3 mr-3">
                <div class="input-group">
                   <div class="input-group-prepend">
@@ -122,7 +105,6 @@ function ShowUserReservationSystem() {
                    <a class="dropdown-item" href="#">Premietačka</a>
                    <a class="dropdown-item" href="#">Kávovar</a>
                    <a class="dropdown-item" href="#">Virtualná tabuľa</a>
-                   
                   </div>
                   <div class="input-group-append">
                      <button type="button" class="btn btn-light" onclick="addEquipmentToFilter()">
@@ -131,7 +113,6 @@ function ShowUserReservationSystem() {
                   </div>
                </div>
                </div>
-
                <div class="form-group mb-3 mr-3">
                <div class="input-group">
                   <div class="input-group-prepend">
@@ -145,7 +126,6 @@ function ShowUserReservationSystem() {
                   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" 
                   id="timeFromDropdown"
                   style="max-height: 208px; overflow-y: auto; min-width: 80px;">
-                
                   </div>
                   </div>
                   <div>
@@ -165,7 +145,6 @@ function ShowUserReservationSystem() {
                   </div>
                </div>
                </div>
-
                <div class="form-group mb-3 mr-3">
                   <div class="btn-group" role="group" aria-label="Basic example">
                      <button type="button" onclick="chooseTimePeriod(this)" name="vlastnyCas" class="btn btn-success">Vlastný čas</button>
@@ -185,9 +164,7 @@ function ShowUserReservationSystem() {
             </form>
             </div>
          </div>
-
          <hr style="border: 2px solid #28a745" />
-
          <div class="container-fluid">
             <div class="row mt-1" id="parent">
                <!--  výpis kariet javascriptom sem -->
@@ -288,17 +265,14 @@ function chooseTimePeriod(button) {
    const chooseTimeButtons = button.parentNode.querySelectorAll("button");
    const timeFromButton = document.getElementById("timeFromButton");
    const timeToButton = document.getElementById("timeToButton");
-
    Array.from(chooseTimeButtons).forEach((btn) => {
       if (btn.classList.contains("btn-success")) {
          btn.classList.remove("btn-success");
          btn.classList.add("btn-outline-success");
       }
    });
-
    button.classList.remove("btn-outline-success");
    button.classList.add("btn-success");
-
    switch (button.name) {
       case "vlastnyCas":
          timeFromButton.disabled = false;
@@ -345,7 +319,6 @@ function addTimeToFilter() {
             .map((time) => convertTimeToMinutes(time.trim()));
          return newRangeStart < existingTo && newRangeEnd > existingFrom;
       });
-
       if (!isOverlapping) {
          const timeButton = document.createElement("button");
          timeButton.type = "button";
@@ -395,13 +368,13 @@ function convertTimeToMinutes(time) {
    return hours * 60 + minutes;
 }
 
-//umožňí rezervácie iba týždeň dopredu (nastaviť podľa potreby)
 function setReservationTimePeriod() {
    var today = new Date();
    //7 dní (dni-hodiny-minuty-sekundy-milisekundy)
    var nextWeek = new Date(today.getTime() + 7 * 24 * 60 * 60 * 1000);
    //aby nemohol používateľ vybrať starší dátum
    document.getElementById("datePicker").setAttribute("min", today.toISOString().slice(0, 10));
+   //umožňí rezervácie iba týždeň dopredu
    document.getElementById("datePicker").setAttribute("max", nextWeek.toISOString().slice(0, 10));
 }
 
@@ -609,10 +582,6 @@ function inputValueChanges() {
    showBuildingStats(getBuildingId());
 }
 
-function getNumberOfPeople() {
-   return parseInt(document.getElementById("numberOfPeopleInput").value, 10);
-}
-
 function getNumberOfDesks() {
    return parseInt(document.getElementById("numberOfDesksInput").value, 10);
 }
@@ -646,7 +615,6 @@ function getFilterObject() {
    filterObject.date = getSelectedDate();
    filterObject.buildingName = getSelectedBuildingName();
    filterObject.buildingId = getBuildingId();
-   filterObject.peopleNumber = getNumberOfPeople();
    filterObject.desksNumber = getNumberOfDesks();
    filterObject.roomName = getRoomName();
    filterObject.equipments = getEquipments();
@@ -715,7 +683,6 @@ function filterByDate(building, filterObject) {
 function filterByEquipments(building, filterObject) {
    const equipmentNames = filterObject.equipments;
    const filteredBuilding = JSON.parse(JSON.stringify(building));
-
    filteredBuilding.rooms = filteredBuilding.rooms.filter((room) => {
       room.desks = room.desks.filter((desk) => {
          const deskEqupmentNames = desk.equipmentIds.map((equipment) => equipment.name);
@@ -729,7 +696,6 @@ function filterByEquipments(building, filterObject) {
 function filterByRoomEquipments(building, filterObject) {
    const equipmentNames = filterObject.equipments;
    const filteredBuilding = JSON.parse(JSON.stringify(building));
-
    filteredBuilding.rooms = filteredBuilding.rooms.filter((room) => {
       return room.desks.some((desk) => {
          const deskEquipmentNames = desk.equipmentIds.map((equipment) => equipment.name);
@@ -743,22 +709,9 @@ function extractTimeHHmm(datetime) {
    const date = new Date(datetime);
    let hours = date.getUTCHours();
    let minutes = date.getUTCMinutes();
-
    hours = hours.toString().padStart(2, "0");
    minutes = minutes.toString().padStart(2, "0");
    return `${hours}:${minutes}`;
-}
-
-function filterByPeopleNumber(building, filterObject) {
-   const peopleNumber = filterObject.peopleNumber;
-   const filteredBuilding = JSON.parse(JSON.stringify(building));
-   filteredBuilding.rooms = filteredBuilding.rooms.filter((room) => {
-      room.desks = room.desks.filter((desk) => {
-         return desk.peopleNumber >= peopleNumber;
-      });
-      return room.desks.length > 0;
-   });
-   return filteredBuilding;
 }
 
 function areTimesNonOverlapping(times1, times2) {
@@ -766,7 +719,6 @@ function areTimesNonOverlapping(times1, times2) {
       const date = new Date(`1970-01-01T${timeString}:00Z`);
       return date.getTime();
    }
-
    for (const time1 of times1) {
       const time1From = getTimeInMilliseconds(time1.timeFrom);
       const time1To = getTimeInMilliseconds(time1.timeTo);
@@ -872,8 +824,7 @@ function getFilteredData(building, filterObject) {
    } else {
       filteredDataByEquipments = filterByEquipments(filteredDataByDate, filterObject);
    }
-   const filteredDataByPeopleNumber = filterByPeopleNumber(filteredDataByEquipments, filterObject);
-   const filteredDataByTimes = filterByTimes(filteredDataByPeopleNumber, filterObject);
+   const filteredDataByTimes = filterByTimes(filteredDataByEquipments, filterObject);
    const filteredDataByDesksNumberInRoom = filterByDesksNumberInRoom(
       filteredDataByTimes,
       filterObject
@@ -896,7 +847,6 @@ function getRoomCardDesksHtmlUserUI(desks) {
       desksHtml += `<h5 style="cursor:pointer;" 
       onclick="ShowHideEquipments(this)">${desk.deskName} <i class="fas fa-chevron-down"></i></h5>`;
       desksHtml += `<ul style="display:none">`;
-      desksHtml += `<li class="text-success">Počet osôb: <span class="text-white">${desk.peopleNumber}</span></li>`;
       desksHtml += `${getRoomCardDeskEquipmentsHtmlUserUI(desk.equipmentIds)}`;
       desksHtml += `</ul> `;
    });
@@ -964,7 +914,6 @@ function normalizeReservationTimesForDeskUI(desk) {
       const result = [];
       let currentTime = new Date(reservation.timeFrom);
       const endTime = new Date(reservation.timeTo);
-
       while (currentTime < endTime) {
          result.push({
             reservator: reservation.userId,
@@ -1062,7 +1011,6 @@ function chooseTimes(button) {
          timeButton.classList.add("btn-outline-success");
       }
    });
-   console.log(timeButtonsAll.length);
 
    if (button.name === "doobeda") {
       for (let index = 0; index < 24; index++) {
@@ -1151,7 +1099,6 @@ function getReservationButtonsHtml(reservations) {
          }
       }
    });
-
    return generatedReservationButtonsHtml;
 }
 

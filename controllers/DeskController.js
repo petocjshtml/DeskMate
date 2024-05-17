@@ -7,12 +7,10 @@ const ReservationController = require("./ReservationController");
 class DeskController {
    async addDesk(deskData) {
       try {
-         // Overiť, či existuje miestnosť
          const roomExists = await Room.findById(deskData.roomId);
          if (!roomExists) {
             throw new Error("Room with the given ID does not exist");
          }
-
          const desk = new Desk(deskData);
          const savedDesk = await desk.save();
          return savedDesk;
@@ -25,7 +23,7 @@ class DeskController {
       try {
          const updatedDesk = await Desk.findByIdAndUpdate(
             deskId,
-            { deskName: updateData.deskName, peopleNumber: updateData.peopleNumber },
+            { deskName: updateData.deskName },
             { new: true }
          );
          return updatedDesk;
@@ -40,7 +38,6 @@ class DeskController {
          if (!equipmentExists) {
             throw new Error("Equipment with the given ID does not exist");
          }
-
          const updatedDesk = await Desk.findByIdAndUpdate(
             deskId,
             { $addToSet: { equipmentIds: equipmentId } },
@@ -109,7 +106,6 @@ class DeskController {
             path: "equipmentIds",
             model: "Equipment",
          });
-
          if (!desks.length) {
             return [];
          }
@@ -125,11 +121,9 @@ class DeskController {
             path: "equipmentIds",
             model: "Equipment",
          });
-
          if (!desk) {
             throw new Error("Desk with the given ID does not exist");
          }
-
          return desk;
       } catch (error) {
          throw new Error(`Error retrieving desk: ${error.message}`);
